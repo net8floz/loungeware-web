@@ -155,6 +155,11 @@ export default class AppFooter extends Vue {
     ['@zandy', 'making music'],
     ['@meseta', 'making music'],
     ['@nahoo', 'fixing Beenade'],
+    ['@baku', 'solving the case'],
+    ['@mimpy', 'actually fixing Beenade'],
+    ['@space', 'starting it all'],
+    ['@tfg', 're-writing the wiki over and over again'],
+    ['@yosi', 'porting Epic Fire Truck'],
   ];
 
   private navItems = {
