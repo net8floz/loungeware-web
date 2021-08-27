@@ -151,7 +151,7 @@ export default class AppFooter extends Vue {
 
   private items = [
     ['@net8floz', 'making Admin Sim'],
-    ['@katsaii', 'making Witch Wanda'],
+    ['@katsaii', 'coming up with the name "Loungeware"'],
     ['@zandy', 'making music'],
     ['@meseta', 'making music'],
     ['@nahoo', 'fixing Beenade'],
