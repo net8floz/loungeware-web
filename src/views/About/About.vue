@@ -92,10 +92,10 @@
           How To Contribute
         </h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
-          ad perferendis corrupti animi blanditiis repudiandae placeat, maxime
-          molestias architecto, similique quaerat, consequatur laborum
-          laboriosam eveniet unde in eligendi optio. Explicabo.
+          Loungeware requires a license to GameMaker Studio 2. If you fit this
+          description, you can contribute to the project by forking on the
+          project on GitHub. Make sure to read the <a href="https://github.com/spacebake/Loungeware/wiki">wiki page</a>
+          for help and guidelines on how to contribute.
         </p>
 
         <div class="text-center">
