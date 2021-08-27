@@ -37,10 +37,11 @@
       <div class="col-xs-12">
         <h2><LaroldImg name="rad larold" /> How To Play</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
-          ad perferendis corrupti animi blanditiis repudiandae placeat, maxime
-          molestias architecto, similique quaerat, consequatur laborum
-          laboriosam eveniet unde in eligendi optio. Explicabo.
+          The easiest way to play Loungeware is right here in your web browser!
+          Follow the link below to get lounging. If you prefer to "own" your
+          games as cold, hard files-on-your-computer, you can enjoy Loungeware
+          offline by downloading one of the executable programs from the
+          project's <a href="https://github.com/spacebake/Loungeware/releases">GitHub page</a>.
         </p>
 
         <div class="text-center">
