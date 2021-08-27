@@ -65,10 +65,10 @@
           Get Involved With A Vibrant Community
         </h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
-          ad perferendis corrupti animi blanditiis repudiandae placeat, maxime
-          molestias architecto, similique quaerat, consequatur laborum
-          laboriosam eveniet unde in eligendi optio. Explicabo.
+          The Loungeware community includes a kind, dedicated group of
+          contributers and gamers. If you are interested at all in Loungeware,
+          feel free to check out the discord community for active updates and
+          discussion.
         </p>
 
         <div class="text-center">
@@ -93,7 +93,7 @@
         </h2>
         <p>
           Loungeware requires a license to GameMaker Studio 2. If you fit this
-          description, you can contribute to the project by forking on the
+          description, you can contribute to the project by forking the
           project on GitHub. Make sure to read the <a href="https://github.com/spacebake/Loungeware/wiki">wiki page</a>
           for help and guidelines on how to contribute.
         </p>
