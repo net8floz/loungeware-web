@@ -37,10 +37,11 @@
       <div class="col-xs-12">
         <h2><LaroldImg name="rad larold" /> How To Play</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
-          ad perferendis corrupti animi blanditiis repudiandae placeat, maxime
-          molestias architecto, similique quaerat, consequatur laborum
-          laboriosam eveniet unde in eligendi optio. Explicabo.
+          The easiest way to play Loungeware is right here in your web browser!
+          Follow the link below to get lounging. If you prefer to "own" your
+          games as cold, hard files-on-your-computer, you can enjoy Loungeware
+          offline by downloading one of the executable programs from the
+          project's <a href="https://github.com/spacebake/Loungeware/releases">GitHub page</a>.
         </p>
 
         <div class="text-center">
@@ -64,10 +65,10 @@
           Get Involved With A Vibrant Community
         </h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
-          ad perferendis corrupti animi blanditiis repudiandae placeat, maxime
-          molestias architecto, similique quaerat, consequatur laborum
-          laboriosam eveniet unde in eligendi optio. Explicabo.
+          The Loungeware community includes a kind, dedicated group of
+          contributers and gamers. If you are interested at all in Loungeware,
+          feel free to check out the discord community for active updates and
+          discussion.
         </p>
 
         <div class="text-center">
@@ -91,10 +92,10 @@
           How To Contribute
         </h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
-          ad perferendis corrupti animi blanditiis repudiandae placeat, maxime
-          molestias architecto, similique quaerat, consequatur laborum
-          laboriosam eveniet unde in eligendi optio. Explicabo.
+          Loungeware requires a license to GameMaker Studio 2. If you fit this
+          description, you can contribute to the project by forking the
+          project on GitHub. Make sure to read the <a href="https://github.com/spacebake/Loungeware/wiki">wiki page</a>
+          for help and guidelines on how to contribute.
         </p>
 
         <div class="text-center">
