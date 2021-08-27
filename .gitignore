@@ -119,4 +119,5 @@ dist
 public/static/game
 public/static/games
 public/static/larolds
-src/common/*
+src/common/gamesList.ts
+src/common/laroldsList.ts
