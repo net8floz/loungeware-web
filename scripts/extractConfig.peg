@@ -8,8 +8,7 @@ Registration
 
 Struct
   = _ "{" items:(Item "," _)* last:(Item)? _ "}" _ {
-  		if (last !== null) return Object.fromEntries(items.map(v => v[0]).concat([last]));
-      else return Object.fromEntries(items.map(v => v[0]));
+      return Object.fromEntries(items.map(v => v[0]).concat((last !== null) ? [last] : []));
     }
 
 Item
@@ -20,8 +19,7 @@ Value
 
 Array
   = "[" _ items:(Value "," _)* last:(Value)? _ "]" {
-  		if (last !== null) return items.map(v => v[0]).concat([last]);
-      else return items;
+      return items.map(v => v[0]).concat((last !== null) ? [last] : []);
     }
 
 Number
