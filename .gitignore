@@ -119,3 +119,4 @@ dist
 public/static/game
 public/static/games
 public/static/larolds
+src/common/*

@@ -34,11 +34,7 @@ export const games = [
         "Okay, so basically you're a witch and you craft wands. Thats why the game is called Witchcraft. Okay submit that. No. Stop writing down what I'm saying. Just use the first bit. -- SPEECH-TO-TEXT --",
       ],
       how_to_play: [
-        [
-          'Use the primary keys to select the highlighted items in order. Missing an item results in a game-over, so be careful. The arrow keys can be used to change the direction of the hand in order to save some time.',
-          ',',
-          ['\r', '\n', ' ', ' ', ' ', ' '],
-        ],
+        'Use the primary keys to select the highlighted items in order. Missing an item results in a game-over, so be careful. The arrow keys can be used to change the direction of the hand in order to save some time.',
       ],
     },
     authorIds: ['katsaii', 'mashmerlow'],
@@ -60,8 +56,8 @@ export const games = [
       music_track: 'noone',
       music_loops: false,
       interpolation_on: false,
-      cartridge_col_primary: [225, 190, 188],
-      cartridge_col_secondary: [255, 238, 234],
+      cartridge_col_primary: [204, 107, 102],
+      cartridge_col_secondary: [232, 182, 181],
       cartridge_label: 'katsaii_witchwanda_label',
       default_is_fail: true,
       supports_difficulty_scaling: true,
@@ -78,11 +74,7 @@ export const games = [
         'You play as Wanda, a friendly witch flying through the sky amongst clouds and floating islands. Suddenly, a group of witches start to attack Wanda and her island. Defeat the wave of witches and protect the island!',
       ],
       how_to_play: [
-        [
-          'Use the primary keys to file bullets at opposing witches. Holding down continuous fire will decrease the rate of fire over time, so try to fire in bursts. Use the arrow keys to move around and avoid the projectiles.',
-          ',',
-          ['\r', '\n', ' ', ' ', ' ', ' '],
-        ],
+        'Use the primary keys to file bullets at opposing witches. Holding down continuous fire will decrease the rate of fire over time, so try to fire in bursts. Use the arrow keys to move around and avoid the projectiles.',
       ],
     },
     authorIds: ['katsaii', 'mashmerlow'],
