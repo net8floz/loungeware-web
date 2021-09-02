@@ -29,14 +29,21 @@
 import LaroldImg from '@/components/LaroldImg.vue';
 import GameCollection, { ViewType } from './components/GameColletion.vue';
 import { Component, Vue } from 'vue-property-decorator';
+import { getRouteMetadata, RoutePath } from '../../common';
 
 @Component({
   components: {
     LaroldImg,
     GameCollection,
   },
-  metaInfo: {
-    title: 'Browse All Games',
+  metaInfo() {
+    const routeMetadata = getRouteMetadata(
+      this.$route.matched[0].path as RoutePath,
+      this.$route.params
+    );
+    return {
+      title: routeMetadata.title,
+    };
   },
 })
 export default class Browse extends Vue {

@@ -7,10 +7,14 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { getRouteMetadata, RoutePath } from '../../common/routes';
 
 @Component({
-  metaInfo: {
-    title: 'Page Nout Found',
+  metaInfo() {
+    const routeMetadata = getRouteMetadata('*', this.$route.params);
+    return {
+      title: routeMetadata.title,
+    };
   },
 })
 export default class Home extends Vue {}

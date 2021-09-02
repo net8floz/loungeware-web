@@ -90,10 +90,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { RouteName, getLinkPath } from '../router';
+import { getLinkPath } from '../router';
 import { numGames, numContributors } from '../common/gamesList';
 import gql from 'graphql-tag';
 import * as schema from '@/gql/schema';
+import { routeName } from '@/common';
 
 //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle(array: any[]) {
@@ -165,7 +166,7 @@ export default class AppFooter extends Vue {
   private navItems = {
     about: {
       to: {
-        name: 'about' as RouteName,
+        name: routeName('about'),
       },
       label: 'About',
     },

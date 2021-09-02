@@ -25,9 +25,7 @@
 import LaroldImg from '@/components/LaroldImg.vue';
 import GameCollectionCard from './GameCollectionCard.vue';
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { routeName } from '@/router';
-import { LocalGameMetadata } from '@/plugins/lwMeta';
-// import {  } from '@/plugins/lwMeta';
+import { MicrogameMetadata, routeName } from '@/common';
 export type ViewType = 'grid' | 'list' | 'carts';
 
 @Component({
@@ -37,7 +35,7 @@ export type ViewType = 'grid' | 'list' | 'carts';
   },
 })
 export default class GameCollection extends Vue {
-  @Prop(Array) games!: LocalGameMetadata[];
+  @Prop(Array) games!: MicrogameMetadata[];
   @Prop(String) viewType!: ViewType;
 
   private get cartSize() {

@@ -1,17 +1,9 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
+import { RouteName, routeName, routePath } from '../common/routes';
 import auth from '@/plugins/auth';
 
 Vue.use(VueRouter);
-
-export type RouteName =
-  | 'about'
-  | 'guestbook'
-  | 'play'
-  | 'browse'
-  | 'browse-by-author'
-  | 'game-page'
-  | 'logout';
 
 export type LinkName =
   | 'discord'
@@ -20,10 +12,6 @@ export type LinkName =
   | 'wiki'
   | 'wiki-larold'
   | 'gm-discord';
-
-export function routeName(name: RouteName): string {
-  return name;
-}
 
 export function getLinkPath(name: LinkName): string {
   switch (name) {
@@ -46,13 +34,13 @@ export function getLinkPath(name: LinkName): string {
 
 const routes: Array<RouteConfig> = [
   {
-    path: '',
+    path: routePath('about'),
     name: routeName('about'),
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/About/About.vue'),
   },
   {
-    path: '/guestbook',
+    path: routePath('guestbook'),
     name: routeName('guestbook'),
     component: () =>
       import(
@@ -60,31 +48,31 @@ const routes: Array<RouteConfig> = [
       ),
   },
   {
-    path: '/play',
+    path: routePath('play'),
     name: routeName('play'),
     component: () =>
       import(/* webpackChunkName: "game" */ '../views/Play/Play.vue'),
   },
   {
-    path: '/browse',
+    path: routePath('browse'),
     name: routeName('browse'),
     component: () =>
       import(/* webpackChunkName: "browse" */ '../views/Browse/Browse.vue'),
   },
   {
-    path: '/browse/:author',
+    path: routePath('browse-by-author'),
     name: routeName('browse-by-author'),
     component: () =>
       import(/* webpackChunkName: "browse" */ '../views/Browse/ByAuthor.vue'),
   },
   {
-    path: '/games/:game',
+    path: routePath('game-page'),
     name: routeName('game-page'),
     component: () =>
       import(/* webpackChunkName: "game" */ '../views/Game/Game.vue'),
   },
   {
-    path: '/logout',
+    path: routePath('logout'),
     name: routeName('logout'),
     beforeEnter: async (to, from, next) => {
       try {
@@ -101,10 +89,10 @@ const routes: Array<RouteConfig> = [
     beforeEnter: async (to, from, next) => {
       try {
         await auth.handleCallback(to.query.state as string);
-        next({ name: 'home' as RouteName });
+        next({ name: 'about' as RouteName });
         window.location.reload();
       } catch (err) {
-        next({ name: 'home' as RouteName });
+        next({ name: 'about' as RouteName });
         window.location.reload();
       }
     },

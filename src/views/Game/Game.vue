@@ -206,10 +206,9 @@
 import LaroldImg from '@/components/LaroldImg.vue';
 import GameRatingForm from './components/GameRatingForm.vue';
 import { Component, Vue } from 'vue-property-decorator';
-import * as common from '@/common/gamesList';
 import * as schema from '@/gql/schema';
 import gql from 'graphql-tag';
-import { routeName } from '@/router';
+import { getRouteMetadata, RoutePath, routeName } from '../../common';
 import Cart from '@/components/Cart.vue';
 
 @Component({
@@ -219,8 +218,12 @@ import Cart from '@/components/Cart.vue';
     Cart,
   },
   metaInfo() {
+    const routeMetadata = getRouteMetadata(
+      this.$route.matched[0].path as RoutePath,
+      this.$route.params
+    );
     return {
-      title: (this as any).game.displayName,
+      title: routeMetadata.title,
     };
   },
   apollo: {
@@ -264,7 +267,7 @@ export default class Game extends Vue {
   }
 
   private get game() {
-    return this.$lwMeta.getGame(this.gameSlug as string);
+    return this.$lwMeta.findGame(this.gameSlug as string);
   }
 
   private get browseByAuthorRoute() {

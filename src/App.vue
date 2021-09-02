@@ -15,7 +15,7 @@ import gql from 'graphql-tag';
 @Component({
   components: { AppHeader, AppFooter },
   metaInfo: {
-    titleTemplate: '%s  |  Loungeware',
+    titleTemplate: '%s',
   },
   apollo: {
     clientVersion: {

@@ -113,8 +113,9 @@
 <script lang="ts">
 import gql from 'graphql-tag';
 import { Component, Vue } from 'vue-property-decorator';
-import { RouteName, getLinkPath } from '../router';
+import { getLinkPath } from '../router';
 import * as schema from '@/gql/schema';
+import { routeName } from '@/common';
 
 @Component({
   apollo: {
@@ -145,7 +146,7 @@ export default class AppHeader extends Vue {
   private navItems = {
     about: {
       to: {
-        name: 'about' as RouteName,
+        name: routeName('about'),
       },
       tooltip: {
         offset: 20,
@@ -155,21 +156,21 @@ export default class AppHeader extends Vue {
     },
     browse: {
       to: {
-        name: 'browse' as RouteName,
+        name: routeName('browse'),
       },
       tooltip: 'Browse all Loungeware games',
       label: 'browse',
     },
     guestbook: {
       to: {
-        name: 'guestbook' as RouteName,
+        name: routeName('guestbook'),
       },
       tooltip: 'Sign our guestbook',
       label: 'Guestbook',
     },
     play: {
       to: {
-        name: 'play' as RouteName,
+        name: routeName('play'),
       },
       tooltip: 'Play Loungeware in your browser',
       label: 'play',

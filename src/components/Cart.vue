@@ -45,7 +45,7 @@ export default class Cart extends Vue {
   @Prop(Number) size?: number;
 
   private get game() {
-    return this.$lwMeta.getGame(this.gameId || '');
+    return this.$lwMeta.findGame(this.gameId || '');
   }
 
   private get primaryColor() {

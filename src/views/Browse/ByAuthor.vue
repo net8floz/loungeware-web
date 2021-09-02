@@ -18,6 +18,7 @@
 import LaroldImg from '@/components/LaroldImg.vue';
 import GameCollection from './components/GameColletion.vue';
 import { Component, Vue } from 'vue-property-decorator';
+import { getRouteMetadata, RoutePath } from '../../common/routes';
 
 @Component({
   components: {
@@ -25,14 +26,18 @@ import { Component, Vue } from 'vue-property-decorator';
     GameCollection,
   },
   metaInfo() {
+    const routeMetadata = getRouteMetadata(
+      this.$route.matched[0].path as RoutePath,
+      this.$route.params
+    );
     return {
-      title: this.$route.params.author,
+      title: routeMetadata.title,
     };
   },
 })
 export default class Browse extends Vue {
   private get games() {
-    return this.$lwMeta.getGamesByAuthor(this.$route.params.author);
+    return this.$lwMeta.findGamesByAuthor(this.$route.params.author);
   }
 
   private get authorName() {

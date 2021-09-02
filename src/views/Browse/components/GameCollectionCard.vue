@@ -62,10 +62,9 @@
 import Cart from '@/components/Cart.vue';
 import Contributor from '@/components/Contributor.vue';
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { routeName } from '@/router';
+import { MicrogameMetadata, routeName } from '@/common';
 import gql from 'graphql-tag';
 import * as schema from '@/gql/schema';
-import { LocalGameMetadata } from '@/plugins/lwMeta';
 
 export type ViewType = 'grid' | 'list' | 'carts';
 
@@ -101,7 +100,7 @@ export type ViewType = 'grid' | 'list' | 'carts';
 })
 export default class GameCollectionCard extends Vue {
   @Prop(String) viewType!: ViewType;
-  @Prop(Object) game!: LocalGameMetadata;
+  @Prop(Object) game!: MicrogameMetadata;
 
   private microgameByGameId!: schema.Microgame;
 

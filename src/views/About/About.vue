@@ -41,7 +41,10 @@
           Follow the link below to get lounging. If you prefer to "own" your
           games as cold, hard files-on-your-computer, you can enjoy Loungeware
           offline by downloading one of the executable programs from the
-          project's <a href="https://github.com/spacebake/Loungeware/releases">GitHub page</a>.
+          project's
+          <a href="https://github.com/spacebake/Loungeware/releases"
+            >GitHub page</a
+          >.
         </p>
 
         <div class="text-center">
@@ -93,8 +96,9 @@
         </h2>
         <p>
           Loungeware requires a license to GameMaker Studio 2. If you fit this
-          description, you can contribute to the project by forking the
-          project on GitHub. Make sure to read the <a href="https://github.com/spacebake/Loungeware/wiki">wiki page</a>
+          description, you can contribute to the project by forking the project
+          on GitHub. Make sure to read the
+          <a href="https://github.com/spacebake/Loungeware/wiki">wiki page</a>
           for help and guidelines on how to contribute.
         </p>
 
@@ -114,20 +118,24 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { RouteName, getLinkPath } from '@/router';
+import { getRouteMetadata, routeName, RoutePath } from '../../common';
+import { getLinkPath } from '@/router';
 import LaroldImg from '@/components/LaroldImg.vue';
 
 @Component({
   components: { LaroldImg },
-  metaInfo: {
-    title: 'About',
+  metaInfo() {
+    const routeMetadata = getRouteMetadata('/', this.$route.params);
+    return {
+      title: routeMetadata.title,
+    };
   },
 })
 export default class About extends Vue {
   private navItems = {
     play: {
       to: {
-        name: 'play' as RouteName,
+        name: routeName('play'),
       },
       label: 'play',
     },

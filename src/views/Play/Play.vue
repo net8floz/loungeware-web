@@ -2,7 +2,7 @@
   <div class="text-center">
     <iframe
       class="media-border"
-      src="/static/game/index.html"
+      :src="`/static/game/index.html?gallery_id=${$route.query.gallery_id}`"
       style="width: 540px; height: 540px; margin-top: 80px"
     />
   </div>
@@ -10,10 +10,17 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { getRouteMetadata, RoutePath } from '../../common/routes';
 
 @Component({
-  metaInfo: {
-    title: 'Play',
+  metaInfo() {
+    const routeMetadata = getRouteMetadata(
+      this.$route.matched[0].path as RoutePath,
+      this.$route.params
+    );
+    return {
+      title: routeMetadata.title,
+    };
   },
 })
 export default class Play extends Vue {}
