@@ -1,16 +1,14 @@
 import Vue from 'vue';
 import _Vue from 'vue';
 
-import firebase from 'firebase/app';
-
-import 'firebase/auth';
-import 'firebase/firestore';
+import { FirebaseApp, initializeApp } from 'firebase/app';
+import * as fbAuth from 'firebase/auth';
 
 import app from '@/plugins/app';
 
 type FBState = {
-  fb?: firebase.app.App;
-  auth?: firebase.auth.Auth;
+  fb?: FirebaseApp;
+  auth?: fbAuth.Auth;
 };
 
 const fbState: FBState = {};
@@ -37,9 +35,9 @@ export class AuthService extends Vue {
     try {
       const fbCreds = app.fbConfig;
       if (fbCreds) {
-        fbState.fb = firebase.initializeApp(JSON.parse(fbCreds));
+        fbState.fb = initializeApp(JSON.parse(fbCreds));
         if (fbState.fb) {
-          fbState.auth = fbState.fb.auth();
+          fbState.auth = fbAuth.getAuth(fbState.fb);
         }
       }
     } catch (err) {
@@ -69,7 +67,7 @@ export class AuthService extends Vue {
     if (fbState?.auth) {
       try {
         const { token } = JSON.parse(atob(state)) as { token: string };
-        await fbState?.auth.signInWithCustomToken(token);
+        await fbAuth.signInWithCustomToken(fbState.auth, token);
         return true;
       } catch (err) {
         return false;

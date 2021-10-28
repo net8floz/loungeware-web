@@ -11,6 +11,7 @@ import '@/plugins/mdi-vue';
 import '@/plugins/app';
 import '@/plugins/lwMeta';
 import '@/plugins/auth';
+import '@/plugins/analytics';
 
 import '@/scss/main.scss';
 

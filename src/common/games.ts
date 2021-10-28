@@ -36,8 +36,15 @@ const fullColorHex = function (r: number, g: number, b: number): string {
 const makeColor = function (color: string | number[]): string {
   try {
     if (typeof color === 'string') {
-      const c = color.substr(2, color.length - 2);
-      return `#${c}`;
+      if (/^[0x]/i.test(color)) {
+        return color.replace('0x', '#');
+      } else if (/^[#]/i.test(color)) {
+        return color;
+      } else if (/^[$]/i.test(color)) {
+        return color.replace('$', '#');
+      }
+
+      throw 'wtf color is that??';
       // const bbggrr = c.split('');
 
       // const rr = bbggrr[4] + bbggrr[5];
