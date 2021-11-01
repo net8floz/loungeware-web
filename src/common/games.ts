@@ -42,9 +42,11 @@ const makeColor = function (color: string | number[]): string {
         return color;
       } else if (/^[$]/i.test(color)) {
         return color.replace('$', '#');
+      } else {
+        return `#${color}`;
       }
 
-      throw 'wtf color is that??';
+      // throw 'wtf color is that??';
       // const bbggrr = c.split('');
 
       // const rr = bbggrr[4] + bbggrr[5];
