@@ -26,6 +26,16 @@ export type Contributor = Node & {
   __typename?: 'Contributor';
   id: Scalars['ID'];
   prefix: Scalars['String'];
+  displayName: Scalars['String'];
+};
+
+export type DifficultySlice = {
+  __typename?: 'DifficultySlice';
+  difficulty: Scalars['Float'];
+  totalPlays: Scalars['Float'];
+  winRatio: Scalars['Float'];
+  lossRatio: Scalars['Float'];
+  winLossRatio: Scalars['Float'];
 };
 
 export type DiscordRole = {
@@ -48,12 +58,32 @@ export type GuestbookCreateInput = {
   text: Scalars['String'];
 };
 
+export type Larold = Node & {
+  __typename?: 'Larold';
+  id: Scalars['ID'];
+  attribution: Scalars['String'];
+  imageUrl: Scalars['String'];
+  name: Scalars['String'];
+  author?: Maybe<Contributor>;
+};
+
+export type LeaderBoardEntry = Node & {
+  __typename?: 'LeaderBoardEntry';
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  score: Scalars['Float'];
+  sprite: Scalars['String'];
+  frame: Scalars['Float'];
+  timestamp: Scalars['Float'];
+};
+
 export type Microgame = Node & {
   __typename?: 'Microgame';
   id: Scalars['ID'];
   gameId: Scalars['String'];
   contributors: Contributor;
   ratings: Array<MicrogameRating>;
+  stats: MicrogameStats;
   hasMyRating: Scalars['Boolean'];
   communityRating: MicrogameCommunityRating;
 };
@@ -74,6 +104,19 @@ export type MicrogameRating = Node & {
   createdAt: Scalars['Float'];
   editedAt: Scalars['Float'];
   author: User;
+};
+
+export type MicrogameStats = Node & {
+  __typename?: 'MicrogameStats';
+  id: Scalars['ID'];
+  wins: Scalars['Float'];
+  losses: Scalars['Float'];
+  totalPlays: Scalars['Float'];
+  lastPlayedTimestamp: Scalars['Float'];
+  winLossRatio: Scalars['Float'];
+  winRatio: Scalars['Float'];
+  lossRatio: Scalars['Float'];
+  difficultySlices: Array<DifficultySlice>;
 };
 
 export type Mutation = {
@@ -113,6 +156,12 @@ export type Query = {
   microgameByGameId: Microgame;
   microgamesByContributor: Microgame;
   contributorByAuthorPrefix: Contributor;
+  LaroldsByAuthor: Array<Larold>;
+  Larolds: Array<Larold>;
+  leaderBoardEntry: LeaderBoardEntry;
+  leaderBoardEntriesTop: Array<LeaderBoardEntry>;
+  microgameStatsByGameId: MicrogameStats;
+  microgameStats: MicrogameStats;
 };
 
 export type QueryNodeArgs = {
@@ -141,6 +190,18 @@ export type QueryMicrogamesByContributorArgs = {
 
 export type QueryContributorByAuthorPrefixArgs = {
   prefix: Scalars['String'];
+};
+
+export type QueryLaroldsByAuthorArgs = {
+  prefix: Scalars['String'];
+};
+
+export type QueryLeaderBoardEntryArgs = {
+  id: Scalars['String'];
+};
+
+export type QueryMicrogameStatsByGameIdArgs = {
+  gameId: Scalars['String'];
 };
 
 export type User = Node & {

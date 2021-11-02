@@ -34,42 +34,51 @@ export function getLinkPath(name: LinkName): string {
 
 const routes: Array<RouteConfig> = [
   {
-    path: routePath('about'),
-    name: routeName('about'),
+    path: '',
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About/About.vue'),
-  },
-  {
-    path: routePath('guestbook'),
-    name: routeName('guestbook'),
-    component: () =>
-      import(
-        /* webpackChunkName: "guestbook" */ '../views/Guestbook/Guestbook.vue'
-      ),
-  },
-  {
-    path: routePath('play'),
-    name: routeName('play'),
-    component: () =>
-      import(/* webpackChunkName: "game" */ '../views/Play/Play.vue'),
-  },
-  {
-    path: routePath('browse'),
-    name: routeName('browse'),
-    component: () =>
-      import(/* webpackChunkName: "browse" */ '../views/Browse/Browse.vue'),
-  },
-  {
-    path: routePath('browse-by-author'),
-    name: routeName('browse-by-author'),
-    component: () =>
-      import(/* webpackChunkName: "browse" */ '../views/Browse/ByAuthor.vue'),
-  },
-  {
-    path: routePath('game-page'),
-    name: routeName('game-page'),
-    component: () =>
-      import(/* webpackChunkName: "game" */ '../views/Game/Game.vue'),
+      import(/* webpackChunkName: "about" */ '../views/Default.vue'),
+    children: [
+      {
+        path: routePath('about'),
+        name: routeName('about'),
+        component: () =>
+          import(/* webpackChunkName: "about" */ '../views/About/About.vue'),
+      },
+      {
+        path: routePath('guestbook'),
+        name: routeName('guestbook'),
+        component: () =>
+          import(
+            /* webpackChunkName: "guestbook" */ '../views/Guestbook/Guestbook.vue'
+          ),
+      },
+      {
+        path: routePath('play'),
+        name: routeName('play'),
+        component: () =>
+          import(/* webpackChunkName: "game" */ '../views/Play/Play.vue'),
+      },
+      {
+        path: routePath('browse'),
+        name: routeName('browse'),
+        component: () =>
+          import(/* webpackChunkName: "browse" */ '../views/Browse/Browse.vue'),
+      },
+      {
+        path: routePath('browse-by-author'),
+        name: routeName('browse-by-author'),
+        component: () =>
+          import(
+            /* webpackChunkName: "browse" */ '../views/Browse/ByAuthor.vue'
+          ),
+      },
+      {
+        path: routePath('game-page'),
+        name: routeName('game-page'),
+        component: () =>
+          import(/* webpackChunkName: "game" */ '../views/Game/Game.vue'),
+      },
+    ],
   },
   {
     path: routePath('logout'),

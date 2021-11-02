@@ -42,16 +42,9 @@ const makeColor = function (color: string | number[]): string {
         return color;
       } else if (/^[$]/i.test(color)) {
         return color.replace('$', '#');
+      } else {
+        return `#${color}`;
       }
-
-      throw 'wtf color is that??';
-      // const bbggrr = c.split('');
-
-      // const rr = bbggrr[4] + bbggrr[5];
-      // const gg = bbggrr[2] + bbggrr[3];
-      // const bb = bbggrr[0] + bbggrr[1];
-
-      // return `#${rr}${gg}${bb}`;
     }
     if (Array.isArray(color)) {
       return fullColorHex(color[0], color[1], color[2]);

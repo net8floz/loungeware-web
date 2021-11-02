@@ -9,6 +9,12 @@ type Query {
   microgameByGameId(gameId: String!): Microgame!
   microgamesByContributor(authorPrefix: String!): Microgame!
   contributorByAuthorPrefix(prefix: String!): Contributor!
+  LaroldsByAuthor(prefix: String!): [Larold!]!
+  Larolds: [Larold!]!
+  leaderBoardEntry(id: String!): LeaderBoardEntry!
+  leaderBoardEntriesTop: [LeaderBoardEntry!]!
+  microgameStatsByGameId(gameId: String!): MicrogameStats!
+  microgameStats: MicrogameStats!
 }
 
 interface Node {
@@ -47,6 +53,7 @@ type Microgame implements Node {
   gameId: String!
   contributors: Contributor!
   ratings: [MicrogameRating!]!
+  stats: MicrogameStats!
   hasMyRating: Boolean!
   communityRating: MicrogameCommunityRating!
 }
@@ -67,10 +74,47 @@ type MicrogameRating implements Node {
   author: User!
 }
 
+type MicrogameStats implements Node {
+  id: ID!
+  wins: Float!
+  losses: Float!
+  totalPlays: Float!
+  lastPlayedTimestamp: Float!
+  winLossRatio: Float!
+  winRatio: Float!
+  lossRatio: Float!
+  difficultySlices: [DifficultySlice!]!
+}
+
+type DifficultySlice {
+  difficulty: Float!
+  totalPlays: Float!
+  winRatio: Float!
+  lossRatio: Float!
+  winLossRatio: Float!
+}
+
 type MicrogameCommunityRating {
   difficulty: Float!
   favorited: Float!
   total: Float!
+}
+
+type Larold implements Node {
+  id: ID!
+  attribution: String!
+  imageUrl: String!
+  name: String!
+  author: Contributor
+}
+
+type LeaderBoardEntry implements Node {
+  id: ID!
+  name: String!
+  score: Float!
+  sprite: String!
+  frame: Float!
+  timestamp: Float!
 }
 
 type Mutation {
