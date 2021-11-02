@@ -31,6 +31,7 @@
           >
             More from {{ author.displayName }}
           </router-link>
+          <a :href="galleryRelativeLink" class="btn"> Play In Gallery </a>
         </div>
       </div>
       <div class="col">
@@ -348,6 +349,10 @@ export default class Game extends Vue {
   private get credits() {
     const credits = this.game?.credits || [];
     return credits;
+  }
+
+  private get galleryRelativeLink() {
+    return `/play?gallery_id=${this.game?.id}`;
   }
 
   // private get myRating(){
