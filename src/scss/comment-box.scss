@@ -11,15 +11,15 @@
   }
 
   &::-webkit-scrollbar-track {
-    background: darken(#1a1721, 3);
+    background: darken(#1f1b25, 3);
   }
 
   &::-webkit-scrollbar-thumb {
-    background: lighten(#1a1721, 20);
+    background: lighten(#1f1b25, 20);
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: lighten(#1a1721, 30);
+    background: lighten(#1f1b25, 30);
   }
 
   .comment-box {

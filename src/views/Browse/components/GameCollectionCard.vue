@@ -24,9 +24,9 @@
         </small>
       </div>
       <div class="flex-grow" />
-      <div class="community" v-if="!!microgame">
+      <!--<div class="community" v-if="!!microgame">
         <div
-          v-tooltip.bottom="
+          v-tooltip.top="
             `Rated by ${microgame.communityRating.favorited} people!`
           "
           v-if="microgame.communityRating.favorited > 0"
@@ -35,7 +35,7 @@
           {{ microgame.communityRating.total }}
         </div>
         <div
-          v-tooltip.bottom="
+          v-tooltip.top="
             `Favorited ${microgame.communityRating.favorited} times!`
           "
           v-if="microgame.communityRating.favorited > 0"
@@ -44,7 +44,7 @@
           {{ microgame.communityRating.favorited }}
         </div>
         <div
-          v-tooltip.bottom="
+          v-tooltip.top="
             `A ${microgame.communityRating.difficulty} / 5 difficulty based on ${microgame.communityRating.total} ratings!`
           "
           v-if="microgame.communityRating.favorited > 0"
@@ -53,6 +53,7 @@
           {{ microgame.communityRating.difficulty }}
           / 5
         </div>
+        -->
       </div>
     </div>
   </router-link>

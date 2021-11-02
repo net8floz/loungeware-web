@@ -49,7 +49,7 @@
       <div class="row full-width center-xs">
         <div class="col-xs-4 text-right">
           <router-link
-            v-tooltip.bottom="navItems.play.tooltip"
+            v-tooltip.top="navItems.play.tooltip"
             active-class="active solid"
             :to="navItems.play.to"
             class="btn"
@@ -58,7 +58,7 @@
           </router-link>
 
           <router-link
-            v-tooltip.bottom="navItems.browse.tooltip"
+            v-tooltip.top="navItems.browse.tooltip"
             active-class="active solid"
             :to="navItems.browse.to"
             class="btn"
@@ -75,7 +75,7 @@
         </div>
         <div class="col-xs-4">
           <router-link
-            v-tooltip.bottom="navItems.guestbook.tooltip"
+            v-tooltip.top="navItems.guestbook.tooltip"
             active-class="active solid"
             :to="navItems.guestbook.to"
             class="btn"
@@ -84,7 +84,7 @@
           </router-link>
 
           <!-- <a
-            v-tooltip.bottom="navItems.github.tooltip"
+            v-tooltip.top="navItems.github.tooltip"
             :href="navItems.github.to"
             target="__blank"
             class="btn"
@@ -92,7 +92,7 @@
             {{ navItems.github.label }}
           </a>
           <a
-            v-tooltip.bottom="navItems.discord.tooltip"
+            v-tooltip.top="navItems.discord.tooltip"
             :href="navItems.discord.to"
             target="__blank"
             class="btn"
@@ -150,7 +150,6 @@ export default class AppHeader extends Vue {
       },
       tooltip: {
         offset: 20,
-        content: 'Click to learn more',
       },
       label: 'about',
     },
@@ -159,7 +158,7 @@ export default class AppHeader extends Vue {
         name: routeName('browse'),
       },
       tooltip: 'Browse all Loungeware games',
-      label: 'browse',
+      label: 'gallery',
     },
     guestbook: {
       to: {
@@ -229,7 +228,7 @@ export default class AppHeader extends Vue {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 80px;
+    padding-top: 100px;
 
     $logo-width: 300px;
     $logo-circle-padding: 20px;
@@ -263,13 +262,13 @@ export default class AppHeader extends Vue {
         height: 100%;
         border-radius: 30%;
         top: 30px;
-        background-color: #1a1721;
+        background-color: #1f1b25;
       }
     }
 
     > .border {
       position: absolute;
-      top: 140px;
+      top: 160px;
       z-index: 0;
     }
     .full {
@@ -283,7 +282,7 @@ export default class AppHeader extends Vue {
 
 .app-header {
   .logo {
-    transition: all 0.5s;
+    transition: all 0.25s;
     &:hover {
       transform: scale(1.1);
     }

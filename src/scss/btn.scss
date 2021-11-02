@@ -7,7 +7,7 @@ div.btn {
   font-family: 'Dosis', sans-serif;
   font-weight: bold;
   font-size: 1.3rem;
-  transition: all 0.2s;
+  transition: all 0.25s;
   display: inline-block;
 
   &:hover {
@@ -20,8 +20,8 @@ div.btn {
   }
 
   &.btn-lg {
-    padding: 24px;
-    font-size: 2rem;
+    padding: 10px 20px 1px 5px;
+    border-radius: 5px;
 
     .mdi {
       line-height: 2rem;
@@ -42,15 +42,14 @@ div.btn {
     color: $loungeBrandDark;
 
     &:hover:not(.active) {
-      background-color: darken($loungeBrandLight, 50);
+      transform: scale(1.05);
     }
 
     &.discord {
       background-color: $discordBrand;
 
       &:hover:not(.active) {
-        background-color: darken($discordBrand, 20);
-        color: white;
+        transform: scale(1.05);
       }
     }
 
@@ -58,8 +57,7 @@ div.btn {
       background-color: $githubBrand;
 
       &:hover:not(.active) {
-        background-color: darken($githubBrand, 20);
-        color: white;
+        transform: scale(1.05);
       }
     }
 
@@ -67,8 +65,7 @@ div.btn {
       background-color: $loungeBrandRed;
 
       &:hover:not(.active) {
-        background-color: darken($loungeBrandRed, 20);
-        color: white;
+        transform: scale(1.05);
       }
     }
   }

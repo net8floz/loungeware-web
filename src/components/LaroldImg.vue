@@ -1,7 +1,7 @@
 <template>
   <div class="larold">
     <div
-      v-tooltip.bottom="{ content: alt, offset: 40 }"
+      v-tooltip.top="{ content: alt, offset: 10 }"
       v-bind="$props"
       :style="`background-image: url('${src}');`"
     />
@@ -111,12 +111,12 @@ div.larold {
     left: -20%;
     position: absolute;
     border-radius: 50%;
-    background-color: #1a1721;
+    background-color: #1f1b25;
   }
 
   &:hover {
-    transform: scale(2);
-    cursor: zoom-in;
+    //transform: scale(2);
+    //cursor: zoom-in;
   }
 
   > div {

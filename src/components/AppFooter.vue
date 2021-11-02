@@ -1,14 +1,14 @@
 <template>
   <footer>
-    <div class="footer-background-container">
+    <!--<div class="footer-background-container">
       <div class="footer-fade" />
       <div class="footer-moon" />
       <div class="footer-bg footer-bg-1" />
       <div class="footer-bg footer-bg-3" />
       <div class="footer-bg footer-bg-2" />
       <div class="footer-bg footer-bg-4" />
-    </div>
-    <div class="container">
+    </div>-->
+    <div class="container footer-container">
       <div class="row center-xs mb-2">
         <div class="col-xs-12 col-sm-4">
           <div class="humble-brag">
@@ -153,14 +153,17 @@ export default class AppFooter extends Vue {
   private items = [
     ['@net8floz', 'making Admin Sim'],
     ['@katsaii', 'coming up with the name "Loungeware"'],
-    ['@zandy', 'making music'],
-    ['@meseta', 'making music'],
+    ['@zandy', 'making jams'],
+    ['@meseta', 'making jams'],
     ['@nahoo', 'fixing Beenade'],
     ['@baku', 'solving the case'],
+    ['@baku', 'being a dork'],
     ['@mimpy', 'actually fixing Beenade'],
     ['@space', 'starting it all'],
     ['@tfg', 're-writing the wiki over and over again'],
     ['@yosi', 'porting Epic Fire Truck'],
+    ['@net8floz', 'making the website'],
+    ['@masharcade', 'nerfing cookie dunk']
   ];
 
   private navItems = {
@@ -232,7 +235,7 @@ $footer-mobile-height: 960px;
 
 footer {
   position: relative;
-  margin-top: 200px;
+  margin-top: 0px;
   z-index: 0;
 
   max-height: $footer-height;
@@ -254,23 +257,23 @@ footer {
   }
 
   .shoutout {
-    border: dotted 3px #c8554e;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    position: relative;
+  border: solid 3px #2b2438;
+  display: flex;
+  position: relative;
+  border-radius: 10px;
+  padding-right: 20px;
 
     img {
-      padding-top: 32px;
-      padding-left: 24px;
+      padding-top: 16px;
+      padding-left: 16px;
       padding-right: 12px;
-      width: 64px;
-      height: 64px;
+      width: 42px;
+      height: 38px;
+      padding-bottom: 16px;
     }
 
     p {
-      padding-top: 24px;
+      padding-top: 0px;
     }
   }
 
@@ -278,21 +281,29 @@ footer {
     z-index: 2;
     position: relative;
     width: 100%;
+    &:first-of-type{
+      border-top: 4px dotted #2b2438;
+      padding-top: 30px;
+    }
+    &:last-of-type{
+       border-top: 4px dotted #2b2438;
+    }
 
     $humble-brag-size: 140px;
     .humble-brag {
       text-align: center;
-      background-color: #1a1721;
+      background-color: #2b2438;
       height: $humble-brag-size;
       border-radius: 100%;
       width: $humble-brag-size;
       margin: auto;
       position: relative;
+      
 
       &:before {
         content: '';
         text-align: center;
-        background-color: #c8554e;
+       
         height: $humble-brag-size + 10;
         border-radius: 100%;
         width: $humble-brag-size + 10;
@@ -309,7 +320,7 @@ footer {
         font-size: 4rem;
         font-family: 'Dosis', sans-serif;
         font-weight: bold;
-        color: darken(#c8554e, 10);
+        color: #e4b581;
         line-height: 4rem;
 
         > img {
@@ -339,7 +350,7 @@ footer {
       position: absolute;
       top: -200px;
       left: 0;
-      background-image: linear-gradient(#1a1721, #332d3d);
+      background-image: linear-gradient(#1f1b25, #332d3d);
       z-index: 0;
       //   display: none;
     }

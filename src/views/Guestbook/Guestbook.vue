@@ -11,10 +11,10 @@
         <div class="guestbook" v-else>
           <div v-for="(entry, i) in guestbooks" :key="i">
             <div class="gb-entry media-border" v-if="entry.author">
-              <div>
-                <span class="title">{{ entry.author.displayName }}</span> on
-                <strong>{{
-                  entry.createdAt | moment('dddd, MMMM Do YYYY')
+              <div class="guestbook-entry-wrap">
+                <span class="title">{{ entry.author.displayName }}</span>
+                <strong class="date-display">{{
+                  entry.createdAt | moment('MMM Do YY')
                 }}</strong>
               </div>
               <div class="mt-1">{{ entry.text }}</div>
@@ -158,21 +158,31 @@ textarea {
 }
 
 .guestbook {
-  max-height: 500px;
+  max-height: 800px;
   overflow-y: scroll;
   overflow-x: hidden;
   padding-right: 50px;
 
   .gb-entry {
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     // margin-right: 100px;
     // border: solid thin #ddd;
 
     .title {
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: bold;
+      color: #f19a52;
     }
   }
+  .date-display{
+    float: right;
+    font-weight: 1;
+  }
+  .guestbook-entry-wrap{
+    border-bottom: 2px dotted #2b2438;
+    padding-bottom: 10px;
+  }
+
 }
 </style>

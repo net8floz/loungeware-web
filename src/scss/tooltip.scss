@@ -1,5 +1,5 @@
 .tooltip {
-  $tooltipColor: #49415d;
+  $tooltipColor: #2b2438;
   $tooltipTriangleSize: 12px;
 
   display: block !important;
@@ -8,8 +8,12 @@
   .tooltip-inner {
     background: $tooltipColor;
     color: white;
-    border-radius: 16px;
-    padding: 20px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color:$loungeBrandLight;
+    //margin-top:5px;
+    //display:none;
+    
   }
 
   .tooltip-arrow {
@@ -20,40 +24,41 @@
     margin: $tooltipTriangleSize;
     border-color: $tooltipColor;
     z-index: 1;
-    display: hidden;
   }
 
-  // &[x-placement^='top'] {
-  //   margin-bottom: $tooltipTriangleSize;
+&[x-placement^='top'] {
+  margin-bottom: $tooltipTriangleSize;
+  margin-bottom:6px;
 
-  //   .tooltip-arrow {
-  //     border-width: $tooltipTriangleSize $tooltipTriangleSize 0
-  //       $tooltipTriangleSize;
-  //     border-left-color: transparent !important;
-  //     border-right-color: transparent !important;
-  //     border-bottom-color: transparent !important;
-  //     bottom: -$tooltipTriangleSize;
-  //     left: calc(50% - $tooltipTriangleSize);
-  //     margin-top: 0;
-  //     margin-bottom: 0;
-  //   }
-  // }
 
-  // &[x-placement^='bottom'] {
-  //   margin-top: $tooltipTriangleSize;
+    .tooltip-arrow {
+      border-width: $tooltipTriangleSize $tooltipTriangleSize 0
+        $tooltipTriangleSize;
+      border-left-color: transparent !important;
+      border-right-color: transparent !important;
+      border-bottom-color: transparent !important;
+      bottom: -$tooltipTriangleSize;
+      left: calc(50% - $tooltipTriangleSize);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
 
-  //   .tooltip-arrow {
-  //     border-width: 0 $tooltipTriangleSize $tooltipTriangleSize
-  //       $tooltipTriangleSize;
-  //     border-left-color: transparent !important;
-  //     border-right-color: transparent !important;
-  //     border-top-color: transparent !important;
-  //     top: -$tooltipTriangleSize;
-  //     left: calc(50% - $tooltipTriangleSize);
-  //     margin-top: 0;
-  //     margin-bottom: 0;
-  //   }
-  // }
+  &[x-placement^='bottom'] {
+    margin-top: $tooltipTriangleSize;
+    
+    .tooltip-arrow {
+      border-width: 0 $tooltipTriangleSize $tooltipTriangleSize
+        $tooltipTriangleSize;
+      border-left-color: transparent !important;
+      border-right-color: transparent !important;
+      border-top-color: transparent !important;
+      top: -$tooltipTriangleSize;
+      left: calc(50% - $tooltipTriangleSize);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
 
   // &[x-placement^='right'] {
   //   margin-left: $tooltipTriangleSize;

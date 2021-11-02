@@ -30,4 +30,7 @@ export default class Play extends Vue {}
 iframe {
   overflow: hidden;
 }
+.footer-container{
+  display: none;
+}
 </style>

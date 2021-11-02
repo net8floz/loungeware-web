@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&family=Roboto&display=swap');
 @import '@drewbot/sass-flexbox-grid/public/sass-flexbox/scss/main.scss';
 
-$loungeBrandDark: #1a1721;
+$loungeBrandDark: #1f1b25;
 $loungeBrandLight: #E4B581;
 $loungeBrandRed: #c8554e;
+$loungeBrandYellow: #f19a52;
+$loungeBrandPink: #d07183;
 
-$borderColor: #322c3f;
+$borderColor: #2b2438;
 
-$discordBrand: #404eed;
-$githubBrand: #279841;
+$discordBrand: $loungeBrandPink;
+$githubBrand: $loungeBrandYellow;
 
 @import 'tooltip.scss';
 @import 'btn.scss';
@@ -81,7 +83,11 @@ a {
 }
 
 .media-border {
-  border: solid 2px $borderColor;
+  //background-color: #2b2438;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 4px solid #2b2438;
+  
 }
 
 h1,
@@ -151,7 +157,7 @@ h6,
 .border {
   width: 100%;
   height: 3px;
-  background-color: #3f3031;
+  border-top: 4px dotted #2b2438;
 }
 
 .dev-red {
@@ -165,3 +171,8 @@ h6,
 .dev-blue {
   background-color: rgba(0, 0, 255, 0.3) !important;
 }
+
+.col-xs-12{
+
+}
+

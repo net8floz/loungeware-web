@@ -9,10 +9,10 @@
     .cart {
       margin: 32px;
 
-      transition: transform 0.5s;
+      transition: transform 0.2s;
 
       &:hover {
-        transform: scale(2);
+        transform: scale(1.1);
         z-index: 4;
       }
     }
@@ -29,6 +29,7 @@
     justify-content: left;
     flex-direction: column;
     display: flex;
+    
 
     .cart {
       //   margin: 32px;
@@ -43,27 +44,37 @@
 
     .content {
       padding: 12px;
-      border: solid 2px $borderColor;
+      border-top: 2px dotted #392b51;
       display: flex;
       flex-grow: 1;
       flex-direction: row;
       text-decoration: none;
+      //width:60%;
+      margin:auto;
 
       .cart-content {
         margin-right: 20px;
+        border-right: 2px dotted #392b51;
+        padding-right: 20px;
       }
 
       .list-content {
         display: flex;
+        //text-align:center;
         .title {
-          //   font-size: 1.4rem;
+          font-size: 1.35rem;
+          //text-align: center;
+
           padding-top: 12px;
           text-decoration: none !important;
           line-height: 1.5rem;
+          letter-spacing: 1px;
+          color: $loungeBrandLight;
           small {
             font-size: 1rem;
             line-height: 1rem;
             text-decoration: none !important;
+            color: $loungeBrandRed;
           }
         }
       }

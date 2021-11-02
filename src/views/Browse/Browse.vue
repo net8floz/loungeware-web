@@ -16,6 +16,7 @@
           Carts
         </div>
       </div>
+       <div class="border gamelist-top-border" />
       <div class="row center-xs full-width">
         <div class="col-xs-12">
           <GameCollection :viewType="viewType" :games="games" />
@@ -24,7 +25,12 @@
     </div>
   </div>
 </template>
+<style scoped>
+  .gamelist-top-border{
+    width:97%;
+  }
 
+</style>
 <script lang="ts">
 import LaroldImg from '@/components/LaroldImg.vue';
 import GameCollection, { ViewType } from './components/GameColletion.vue';
