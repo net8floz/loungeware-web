@@ -11,7 +11,11 @@ import { getRouteMetadata, RoutePath } from '../../common/routes';
 
 @Component({
   metaInfo() {
-    const routeMetadata = getRouteMetadata('*', this.$route.params);
+    const routeMetadata = getRouteMetadata(
+      '*',
+      this.$route.params,
+      this.$route.query
+    );
     return {
       title: routeMetadata.title,
     };

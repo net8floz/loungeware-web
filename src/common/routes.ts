@@ -23,7 +23,8 @@ export type RouteMetadata = {
 
 type RouteMetadataGenerator = (
   path: string,
-  params: { [name: string]: string }
+  params: Dictionary<string>,
+  query: Dictionary<string | (string | null)[]>
 ) => RouteMetadata;
 
 function makeTitle(
@@ -129,6 +130,8 @@ export function routeName(name: RouteName): string {
   return name;
 }
 
+export type Dictionary<T> = { [key: string]: T };
+
 export const routeMetadatas: { [route: string]: RouteMetadataGenerator } = {
   [routePath('browse')]: () => {
     return {
@@ -194,11 +197,29 @@ export const routeMetadatas: { [route: string]: RouteMetadataGenerator } = {
       ...makeTitle('Sign Out Of Your Account'),
     };
   },
-  [routePath('play')]: () => {
-    return {
-      ...getDefaultRouteMetadata(),
-      ...makeTitle('Play Loungeware'),
-    };
+  [routePath('play')]: (_, __, query) => {
+    const game = findGame(
+      query.gallery_id == undefined ? '' : (query.gallery_id as string)
+    );
+    if (game) {
+      return {
+        ...getDefaultRouteMetadata(),
+        ...makeImage(getGameCart(game.id)),
+        ...makeTitle(`Play ${game.displayName} by ${game.authors.join(' & ')}`),
+        ...makeDescription(
+          `${
+            game.description?.length > 0
+              ? game?.description.join('\n') + '\n Play in your browser!'
+              : 'Play in your browser!'
+          }`
+        ),
+      };
+    } else {
+      return {
+        ...getDefaultRouteMetadata(),
+        ...makeTitle('Play Loungeware'),
+      };
+    }
   },
   [routePath('404')]: () => {
     return {
@@ -216,10 +237,11 @@ export const routeMetadatas: { [route: string]: RouteMetadataGenerator } = {
 
 export function getRouteMetadata(
   path: RoutePath,
-  params: { [name: string]: string }
+  params: Dictionary<string>,
+  query: Dictionary<string | (string | null)[]>
 ): RouteMetadata {
   if (routeMetadatas[path]) {
-    return routeMetadatas[path](path, params);
+    return routeMetadatas[path](path, params, query);
   }
   throw new Error('Could not get metadata for path ' + path);
 }
