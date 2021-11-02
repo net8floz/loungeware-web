@@ -1,8 +1,8 @@
 <template>
   <div class="app full-height">
-    <AppHeader />
+    <!-- <AppHeader /> -->
     <router-view class="flex-grow" />
-    <AppFooter />
+    <!-- <AppFooter /> -->
   </div>
 </template>
 
