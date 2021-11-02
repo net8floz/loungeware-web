@@ -1,6 +1,8 @@
 import { findGame, games, getGameCart } from './games';
 import { findGamesByAuthor, findAuthorDisplayName } from '.';
 
+export type Dictionary<T> = { [key: string]: T };
+
 export type RouteMetadata = {
   'meta.description': string;
   'meta.keywords': string;
@@ -129,8 +131,6 @@ export function routePath(routeName: RouteName): RoutePath {
 export function routeName(name: RouteName): string {
   return name;
 }
-
-export type Dictionary<T> = { [key: string]: T };
 
 export const routeMetadatas: { [route: string]: RouteMetadataGenerator } = {
   [routePath('browse')]: () => {
