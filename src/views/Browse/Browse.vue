@@ -1,10 +1,10 @@
 <template>
   <div class="container full-width">
     <div class="row center-xs">
-      <div class="col-xs-12 col-md-6">
+      <div class="col-xs-6 col-md-6 text-left">
         <h2><larold-img name="ghost larold" class="mr-1" /> All Games</h2>
       </div>
-      <div class="col-xs-12 col-md-6 mt-2 text-right">
+      <div class="col-xs-6 col-md-6 mt-2 text-right">
         <div
           class="mt-1"
           @click="setViewType('list')"
@@ -16,7 +16,7 @@
           Carts
         </div>
       </div>
-       <div class="border gamelist-top-border" />
+      <!--<div class="border gamelist-top-border" />-->
       <div class="row center-xs full-width">
         <div class="col-xs-12">
           <GameCollection :viewType="viewType" :games="games" />
@@ -26,9 +26,9 @@
   </div>
 </template>
 <style scoped>
-  .gamelist-top-border{
-    width:97%;
-  }
+.text-left, .text-right{
+  margin-bottom: -40px;
+}
 
 </style>
 <script lang="ts">

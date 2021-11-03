@@ -163,7 +163,7 @@ export default class AppFooter extends Vue {
     ['@tfg', 're-writing the wiki over and over again'],
     ['@yosi', 'porting Epic Fire Truck'],
     ['@net8floz', 'making the website'],
-    ['@masharcade', 'nerfing cookie dunk']
+    ['@masharcade', 'nerfing cookie dunk'],
   ];
 
   private navItems = {
@@ -257,11 +257,11 @@ footer {
   }
 
   .shoutout {
-  border: solid 3px #2b2438;
-  display: flex;
-  position: relative;
-  border-radius: 10px;
-  padding-right: 20px;
+    border: solid 3px #2b2438;
+    display: flex;
+    position: relative;
+    border-radius: 10px;
+    padding-right: 20px;
 
     img {
       padding-top: 16px;
@@ -281,12 +281,12 @@ footer {
     z-index: 2;
     position: relative;
     width: 100%;
-    &:first-of-type{
+    &:first-of-type {
       border-top: 4px dotted #2b2438;
       padding-top: 30px;
     }
-    &:last-of-type{
-       border-top: 4px dotted #2b2438;
+    &:last-of-type {
+      border-top: 4px dotted #2b2438;
     }
 
     $humble-brag-size: 140px;
@@ -298,12 +298,11 @@ footer {
       width: $humble-brag-size;
       margin: auto;
       position: relative;
-      
 
       &:before {
         content: '';
         text-align: center;
-       
+
         height: $humble-brag-size + 10;
         border-radius: 100%;
         width: $humble-brag-size + 10;

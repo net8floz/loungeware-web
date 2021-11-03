@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <div class="title">404</div>
+    <div class="title" style="margin-top: 100px">404</div>
     <p>This page was not found</p>
   </div>
 </template>

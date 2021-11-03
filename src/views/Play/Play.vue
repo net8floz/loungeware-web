@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <iframe
-      class="media-border"
+      class="media-border game-canvas"
       :src="`/static/game/index.html?gallery_id=${$route.query.gallery_id}`"
       style="width: 540px; height: 540px; margin-top: 80px"
     />
@@ -29,8 +29,10 @@ export default class Play extends Vue {}
 <style scoped lange="scss">
 iframe {
   overflow: hidden;
+  border-radius:0px;
+  margin-bottom: 80px;
 }
-.footer-container{
+.footer-container {
   display: none;
 }
 </style>

@@ -270,6 +270,7 @@ export default class AppHeader extends Vue {
       position: absolute;
       top: 160px;
       z-index: 0;
+      border-top: 4px solid #2b2438;
     }
     .full {
       display: block;

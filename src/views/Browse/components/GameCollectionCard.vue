@@ -54,7 +54,6 @@
           / 5
         </div>
         -->
-      </div>
     </div>
   </router-link>
 </template>

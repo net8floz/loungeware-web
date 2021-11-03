@@ -12,6 +12,7 @@
           <div v-for="(entry, i) in guestbooks" :key="i">
             <div class="gb-entry media-border" v-if="entry.author">
               <div class="guestbook-entry-wrap">
+                <img class="discord-pfp" src="/static/images/test-pfp.png" />
                 <span class="title">{{ entry.author.displayName }}</span>
                 <strong class="date-display">{{
                   entry.createdAt | moment('MMM Do YY')
@@ -166,6 +167,8 @@ textarea {
   .gb-entry {
     width: 100%;
     padding: 10px;
+    background: none;
+    border-radius:3px;
     // margin-right: 100px;
     // border: solid thin #ddd;
 
@@ -175,14 +178,22 @@ textarea {
       color: #f19a52;
     }
   }
-  .date-display{
+  .date-display {
     float: right;
     font-weight: 1;
   }
-  .guestbook-entry-wrap{
-    border-bottom: 2px dotted #2b2438;
-    padding-bottom: 10px;
+  .guestbook-entry-wrap {
+    border-bottom: 2px dotted #b381e445;
+    padding-bottom: 12px;
   }
 
+  .discord-pfp{
+    width: 28px;
+    border-radius: 100px;
+    margin-right: 10px;
+    position: relative;
+    top: -20px;
+    margin-bottom: -28px;
+  }
 }
 </style>

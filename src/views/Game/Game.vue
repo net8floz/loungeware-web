@@ -1,9 +1,8 @@
 <template>
   <div class="container full-width">
     <!-- Breadcrumbs -->
-    
+
     <div class="row center-xs full-width">
-      
       <div class="col-xs-12">
         <h2 class="game-header">
           <larold-img name="ghost larold" class="mr-1" />
@@ -40,7 +39,7 @@
         <div>
           <div class="title mt-1">INFO</div>
           <div class="">Added On {{ dateAdded }}</div>
-          <div class="">Duration {{ gameDuration }} seconds</div>
+          <div class="">Duration {{ game }} seconds</div>
         </div>
         <!-- CREDITS -->
         <div>
@@ -203,10 +202,9 @@
       </div>
     </div>-->
   </div>
-  
 </template>
 <style scoped>
-.game-header{
+.game-header {
   border: 2px dotted #312942;
   border-left: none;
   border-right: none;
@@ -265,6 +263,20 @@ import Cart from '@/components/Cart.vue';
                 id
                 displayName
               }
+              stats {
+                totalPlays
+                wins
+                losses
+                winRatio
+                winLossRatio
+                difficultySlices {
+                  difficulty
+                  totalPlays
+                  winRatio
+                  lossRatio
+                  winLossRatio
+                }
+              }
             }
           }
         }
@@ -321,6 +333,10 @@ export default class Game extends Vue {
 
   private get hasMyRating() {
     return this.microgame?.hasMyRating || false;
+  }
+
+  private get hasStats() {
+    return this.microgame?.stats || false;
   }
 
   private get hasRatings() {
@@ -393,6 +409,4 @@ export default class Game extends Vue {
   width: 100%;
   height: auto;
 }
-
-
 </style>

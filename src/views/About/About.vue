@@ -35,7 +35,7 @@
     </div>
 
     <div class="row center-xs">
-      <div class="col-xs-12  para-wrap">
+      <div class="col-xs-12 para-wrap">
         <h2><LaroldImg name="rad larold" /> How To Play</h2>
         <p>
           The easiest way to play Loungeware is right here in your web browser!
@@ -63,17 +63,16 @@
     <div class="border" />
 
     <div class="row center-xs">
-      <div class="col-xs-12  para-wrap">
+      <div class="col-xs-12 para-wrap">
         <h2>
           <LaroldImg name="headphone larold" />
           Get Involved With A Vibrant Community
         </h2>
         <p>
-          The Loungeware community are a kind, dedicated group of
-          freaks and weirdos. If you are interested at all in Loungeware,
-          or want to make your own microgame,
-          feel free to check out the discord community for active updates and
-          discussion.
+          The Loungeware community are a kind, dedicated group of freaks and
+          weirdos. If you are interested at all in Loungeware, or want to make
+          your own microgame, feel free to check out the discord community for
+          active updates and discussion.
         </p>
 
         <div class="text-center">
@@ -91,15 +90,15 @@
     <div class="border" />
 
     <div class="row center-xs">
-      <div class="col-xs-12  para-wrap">
+      <div class="col-xs-12 para-wrap">
         <h2>
           <LaroldImg name="artist larold" />
           How To Contribute
         </h2>
         <p>
-          Loungeware requires a license or active subscription to GameMaker Studio 2. If you fit this
-          description, you can contribute to the project by forking the project
-          on GitHub. Make sure to read the
+          Loungeware requires a license or active subscription to GameMaker
+          Studio 2. If you fit this description, you can contribute to the
+          project by forking the project on GitHub. Make sure to read the
           <a href="https://github.com/spacebake/Loungeware/wiki">wiki page</a>
           for help and guidelines on how to contribute.
         </p>
@@ -118,13 +117,13 @@
   </div>
 </template>
 <style scoped>
-.first-para{
-margin-top: 40px;
+.first-para {
+  margin-top: 40px;
 }
-.trailer-wrap{
+.trailer-wrap {
   max-width: 65%;
 }
-.para-wrap{
+.para-wrap {
   max-width: 75%;
 }
 </style>

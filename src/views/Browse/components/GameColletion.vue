@@ -1,6 +1,6 @@
 <template>
   <div :class="`game-collection ${viewType}`">
-    <div v-for="(game, i) in games" :key="i">
+    <div class="gamelist-linewrap" v-for="(game, i) in games" :key="i">
       <GameCollectionCard :game="game" :viewType="viewType" />
       <!-- <router-link
         class="content"
@@ -20,7 +20,9 @@
     </div>
   </div>
 </template>
+<style scoped>
 
+</style>
 <script lang="ts">
 import LaroldImg from '@/components/LaroldImg.vue';
 import GameCollectionCard from './GameCollectionCard.vue';
