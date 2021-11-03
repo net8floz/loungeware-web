@@ -45,7 +45,8 @@ import { getRouteMetadata, RoutePath } from '../../common';
   metaInfo() {
     const routeMetadata = getRouteMetadata(
       this.$route.matched[0].path as RoutePath,
-      this.$route.params
+      this.$route.params,
+      this.$route.query
     );
     return {
       title: routeMetadata.title,

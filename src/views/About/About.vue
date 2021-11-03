@@ -136,7 +136,11 @@ import LaroldImg from '@/components/LaroldImg.vue';
 @Component({
   components: { LaroldImg },
   metaInfo() {
-    const routeMetadata = getRouteMetadata('/', this.$route.params);
+    const routeMetadata = getRouteMetadata(
+      '/',
+      this.$route.params,
+      this.$route.query
+    );
     return {
       title: routeMetadata.title,
     };
