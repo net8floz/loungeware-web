@@ -1,10 +1,9 @@
 <template>
   <div class="container full-width">
     <!-- Breadcrumbs -->
-
     <div class="row center-xs full-width">
       <div class="col-xs-12">
-        <h2 class="game-header">
+        <h2>
           <larold-img name="ghost larold" class="mr-1" />
           <router-link :to="{ name: 'browse' }"> All Games </router-link>
           /
@@ -40,7 +39,7 @@
         <div>
           <div class="title mt-1">INFO</div>
           <div class="">Added On {{ dateAdded }}</div>
-          <div class="">Duration {{ game }} seconds</div>
+          <div class="">Duration {{ microgame.stats }} seconds</div>
         </div>
         <!-- CREDITS -->
         <div>
@@ -97,10 +96,9 @@
       </div>
     </div>
 
-    <!--
     <div class="border mt-2 mb-2" />
 
-    
+    <!-- Community -->
     <div class="row center-xs full-width">
       <div class="col-xs-12">
         <h2>
@@ -110,13 +108,13 @@
       </div>
     </div>
 
-
+    <!-- No Community -->
     <div class="text-center" v-if="!microgame">
       <p class="title">Loading Community...</p>
     </div>
 
     <div v-else class="row center-xs full-width">
-
+      <!-- RATING -->
       <div class="col">
         <div class="title">
           Rating
@@ -138,7 +136,7 @@
         </div>
       </div>
 
-      
+      <!-- Comments -->
       <div class="col">
         <div class="title">Comments</div>
         <div class="comment-box-container">
@@ -201,17 +199,9 @@
           :microgameId="microgame.id"
         />
       </div>
-    </div>-->
+    </div>
   </div>
 </template>
-<style scoped>
-.game-header {
-  border: 2px dotted #312942;
-  border-left: none;
-  border-right: none;
-  padding-bottom: 24px;
-}
-</style>
 
 <script lang="ts">
 import LaroldImg from '@/components/LaroldImg.vue';
@@ -265,19 +255,19 @@ import Cart from '@/components/Cart.vue';
                 id
                 displayName
               }
-              stats {
+            }
+            stats {
+              id
+              wins
+              losses
+              totalPlays
+              lastPlayedTimestamp
+              winRatio
+              difficultySlices {
+                difficulty
                 totalPlays
                 wins
-                losses
                 winRatio
-                winLossRatio
-                difficultySlices {
-                  difficulty
-                  totalPlays
-                  winRatio
-                  lossRatio
-                  winLossRatio
-                }
               }
             }
           }
@@ -335,10 +325,6 @@ export default class Game extends Vue {
 
   private get hasMyRating() {
     return this.microgame?.hasMyRating || false;
-  }
-
-  private get hasStats() {
-    return this.microgame?.stats || false;
   }
 
   private get hasRatings() {
