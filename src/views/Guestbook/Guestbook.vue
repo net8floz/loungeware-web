@@ -168,7 +168,7 @@ textarea {
     width: 100%;
     padding: 10px;
     background: none;
-    border-radius:3px;
+    border-radius: 3px;
     // margin-right: 100px;
     // border: solid thin #ddd;
 
@@ -187,7 +187,7 @@ textarea {
     padding-bottom: 12px;
   }
 
-  .discord-pfp{
+  .discord-pfp {
     width: 28px;
     border-radius: 100px;
     margin-right: 10px;

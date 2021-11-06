@@ -146,7 +146,6 @@ export const routeMetadatas: { [route: string]: RouteMetadataGenerator } = {
     const authorGames = findGamesByAuthor(params?.author);
     if (authorGames.length > 0) {
       const displayName = findAuthorDisplayName(params?.author);
-      console.log(displayName);
       return {
         ...getDefaultRouteMetadata(),
         ...makeTitle(`Browse ${authorGames.length} Games By ${displayName}`),

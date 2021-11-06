@@ -26,10 +26,10 @@
   </div>
 </template>
 <style scoped>
-.text-left, .text-right{
+.text-left,
+.text-right {
   margin-bottom: -40px;
 }
-
 </style>
 <script lang="ts">
 import LaroldImg from '@/components/LaroldImg.vue';

@@ -89,6 +89,8 @@ type MicrogameStats implements Node {
 type DifficultySlice {
   difficulty: Float!
   totalPlays: Float!
+  wins: Float!
+  losses: Float!
   winRatio: Float!
   lossRatio: Float!
   winLossRatio: Float!
@@ -114,6 +116,8 @@ type LeaderBoardEntry implements Node {
   score: Float!
   sprite: String!
   frame: Float!
+  last_microgame_key: String!
+  last_microgame_name: String!
   timestamp: Float!
 }
 
