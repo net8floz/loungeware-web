@@ -12,7 +12,10 @@
           <div v-for="(entry, i) in guestbooks" :key="i">
             <div class="gb-entry media-border" v-if="entry.author">
               <div class="guestbook-entry-wrap">
-                <img class="discord-pfp" src="/static/images/test-pfp.png" />
+                <img
+                  class="discord-pfp"
+                  :src="entry.author.profilePictureUrl"
+                />
                 <span class="title">{{ entry.author.displayName }}</span>
                 <strong class="date-display">{{
                   entry.createdAt | moment('MMM Do YY')
@@ -77,6 +80,7 @@ import * as schema from '@/gql/schema';
             author {
               id
               displayName
+              profilePictureUrl
             }
           }
         }
