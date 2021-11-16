@@ -19,7 +19,7 @@
         <Cart :size="2" :game-id="game.id" />
       </div>
       <div class="col col-6 title-panel">
-        <!-- INFO --> 
+        <!-- INFO -->
         <div class="panel">
           <div class="title mt-1">{{ displayName }}</div>
           <router-link
@@ -87,7 +87,6 @@
         </div>
       </div>
     </div>
-    
 
     <!-- No Game -->
     <div v-if="!game">
@@ -120,10 +119,19 @@
         </div>
         <div class="tabs">
           <div class="tab" v-show="activeTabIndex == 0">
-            <div>Total Plays: <b>{{ microgame.stats.totalPlays }}</b></div>
-            <div>Win Percent: <b>{{ Math.round(microgame.stats.winRatio * 100) }}%</b></div>
-            <div>Wins: <b>{{ microgame.stats.wins }}</b></div>
-            <div>Losses: <b>{{ microgame.stats.losses }}</b></div>
+            <div>
+              Total Plays: <b>{{ microgame.stats.totalPlays }}</b>
+            </div>
+            <div>
+              Win Percent:
+              <b>{{ Math.round(microgame.stats.winRatio * 100) }}%</b>
+            </div>
+            <div>
+              Wins: <b>{{ microgame.stats.wins }}</b>
+            </div>
+            <div>
+              Losses: <b>{{ microgame.stats.losses }}</b>
+            </div>
           </div>
           <div
             v-for="i in (1, 5)"
@@ -131,17 +139,31 @@
             class="tab"
             v-show="activeTabIndex == i"
           >
-            <div>Total Plays: <b>{{ microgame.stats.difficultySlices[i - 1].totalPlays }}</b></div>
-            <div>Win Percent: <b>{{ Math.round(microgame.stats.difficultySlices[i - 1].winRatio * 100) }}%</b></div>
-            <div>Wins: <b>{{ microgame.stats.difficultySlices[i - 1].wins }}</b></div>
-            <div>Losses: <b>{{ microgame.stats.difficultySlices[i - 1].losses }}</b></div>
+            <div>
+              Total Plays:
+              <b>{{ microgame.stats.difficultySlices[i - 1].totalPlays }}</b>
+            </div>
+            <div>
+              Win Percent:
+              <b
+                >{{
+                  Math.round(
+                    microgame.stats.difficultySlices[i - 1].winRatio * 100
+                  )
+                }}%</b
+              >
+            </div>
+            <div>
+              Wins: <b>{{ microgame.stats.difficultySlices[i - 1].wins }}</b>
+            </div>
+            <div>
+              Losses:
+              <b>{{ microgame.stats.difficultySlices[i - 1].losses }}</b>
+            </div>
           </div>
         </div>
       </div>
     </div>
-   
-
-
 
     <!-- <div class="text-center">
       <h2 class="title">"{{ prompt }}"</h2>
@@ -286,7 +308,6 @@ export default class Game extends Vue {
     return this?.game?.prompt || '';
   }
 
-
   private get cartLabelSrc() {
     return this.game ? `/games/${this.game.id}.png` : '';
   }
@@ -389,13 +410,13 @@ export default class Game extends Vue {
 .panel {
   border-bottom: 4px dotted #2b2438;
   padding: 0px 12px;
-  margin:0px;
-  &:last-of-type{
+  margin: 0px;
+  &:last-of-type {
     border-bottom: none;
   }
 }
 
-.title{
+.title {
   font-size: 1.2rem;
 }
 
@@ -415,26 +436,25 @@ $tab_color: #2b2438;
     background-color: #f19a52;
     color: #1f1b25;
   }
-
 }
 
 .tabs {
   .tab {
     //padding: 20px;
-    margin:auto;
+    margin: auto;
     border: 4px solid $tab_color;
     margin-bottom: 30px;
-    max-width:466px;
-    div{
-      padding:5px;
+    max-width: 466px;
+    div {
+      padding: 5px;
       padding-left: 8px;
       border-bottom: 2px dotted $tab_color;
-      &:last-of-type{
+      &:last-of-type {
         border-bottom: none;
       }
-      b{
-        color:#f19a52;
-        float:right;
+      b {
+        color: #f19a52;
+        float: right;
       }
     }
   }
@@ -468,78 +488,76 @@ $tab_color: #2b2438;
   padding: 0;
   margin: 0;
   list-style: none;
-  li{padding-left:0px;}
+  li {
+    padding-left: 0px;
+  }
 }
-.credits-title{
+.credits-title {
   padding-bottom: 5px;
   margin-bottom: 5px;
   padding-left: 0px;
   padding-right: 3px;
 }
 
-.row{
-  .col{
+.row {
+  .col {
     border-left: 4px dotted #2b2438;
-    &:first-of-type{
+    &:first-of-type {
       border-left: none;
     }
   }
 }
 
-.info-node{
-  display:block;
-  width:100%;
+.info-node {
+  display: block;
+  width: 100%;
 }
 
-.tab-buttons .btn{
+.tab-buttons .btn {
   border: 4px solid #2b2438;
   border-left: none;
   border-bottom: none;
   padding: 5px 8px 8px 8px;
-  &:first-of-type{
-     border-left: 4px solid #2b2438;
+  &:first-of-type {
+    border-left: 4px solid #2b2438;
   }
-  
 }
 
-.desc-wrap{
- .inner{
-   padding: 0px;
-   margin-top: 10px;
-   p{
-     padding:0px;
-     margin:0px;
-   }
- }
-
-  &:last-of-type{
-    .inner{
-      margin-bottom:14px;
+.desc-wrap {
+  .inner {
+    padding: 0px;
+    margin-top: 10px;
+    p {
+      padding: 0px;
+      margin: 0px;
     }
   }
 
+  &:last-of-type {
+    .inner {
+      margin-bottom: 14px;
+    }
+  }
 }
 
-.pad-10{
-  padding:20px;
+.pad-10 {
+  padding: 20px;
   padding-top: 15px;
-  width:100%;
+  width: 100%;
 }
 
-.basic-info{
+.basic-info {
   align-items: flex-start;
-  .pad-10{
-    padding-left:0px;
+  .pad-10 {
+    padding-left: 0px;
   }
 }
 
-.links{
-  
-  .btn{
+.links {
+  .btn {
     font-size: 1rem;
-    flex:2;
-    padding-left:0px;
+    flex: 2;
+    padding-left: 0px;
   }
 }
-
 </style>
