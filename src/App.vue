@@ -1,6 +1,6 @@
 <template>
   <div class="app full-height">
-    <router-view class="flex-grow" />
+    <router-view class="flex-grow scrollview" />
   </div>
 </template>
 

@@ -33,6 +33,8 @@ export type DifficultySlice = {
   __typename?: 'DifficultySlice';
   difficulty: Scalars['Float'];
   totalPlays: Scalars['Float'];
+  wins: Scalars['Float'];
+  losses: Scalars['Float'];
   winRatio: Scalars['Float'];
   lossRatio: Scalars['Float'];
   winLossRatio: Scalars['Float'];
@@ -74,6 +76,8 @@ export type LeaderBoardEntry = Node & {
   score: Scalars['Float'];
   sprite: Scalars['String'];
   frame: Scalars['Float'];
+  last_microgame_key: Scalars['String'];
+  last_microgame_name: Scalars['String'];
   timestamp: Scalars['Float'];
 };
 
@@ -122,6 +126,7 @@ export type MicrogameStats = Node & {
 export type Mutation = {
   __typename?: 'Mutation';
   guestbookCreate: Guestbook;
+  visitPage: PageVisit;
   addMicrogameRating: MicrogameRating;
 };
 
@@ -129,8 +134,20 @@ export type MutationGuestbookCreateArgs = {
   input: GuestbookCreateInput;
 };
 
+export type MutationVisitPageArgs = {
+  route: Scalars['String'];
+};
+
 export type MutationAddMicrogameRatingArgs = {
   input: AddMicrogameRatingInput;
+};
+
+export type NewsEntry = {
+  __typename?: 'NewsEntry';
+  id: Scalars['String'];
+  title: Scalars['String'];
+  content: Scalars['String'];
+  type: Scalars['String'];
 };
 
 export type Node = {
@@ -147,7 +164,6 @@ export type PageVisit = Node & {
 export type Query = {
   __typename?: 'Query';
   node: Node;
-  clientVersion: Scalars['String'];
   user: User;
   me: User;
   guestbooks: Array<Guestbook>;
@@ -162,6 +178,8 @@ export type Query = {
   leaderBoardEntriesTop: Array<LeaderBoardEntry>;
   microgameStatsByGameId: MicrogameStats;
   microgameStats: MicrogameStats;
+  clientVersion: Scalars['String'];
+  news: Array<NewsEntry>;
 };
 
 export type QueryNodeArgs = {
