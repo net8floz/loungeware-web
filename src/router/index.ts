@@ -2,6 +2,8 @@ import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import { RouteName, routeName, routePath } from '../common/routes';
 import auth from '@/plugins/auth';
+import apollo from '../plugins/apollo';
+import { gql } from 'apollo-boost';
 
 Vue.use(VueRouter);
 
@@ -20,7 +22,7 @@ export function getLinkPath(name: LinkName): string {
     case 'github':
       return 'https://github.com/spacebake/loungeware';
     case 'github-web':
-      return 'https://github.com/spacebake/Loungeware/tree/html5_bitches/Web';
+      return 'https://github.com/net8floz/loungeware-web';
     case 'wiki':
       return 'https://github.com/spacebake/Loungeware/wiki';
     case 'wiki-larold':
@@ -117,6 +119,23 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  apollo.defaultClient.mutate({
+    mutation: gql`
+      mutation router_visitPage($route: String!) {
+        visitPage(route: $route) {
+          id
+          visits
+        }
+      }
+    `,
+    variables: {
+      route: to.fullPath,
+    },
+  });
+  next();
 });
 
 export default router;

@@ -1,6 +1,5 @@
 type Query {
   node(id: String!): Node!
-  clientVersion: String!
   user(id: String!): User!
   me: User!
   guestbooks: [Guestbook!]!
@@ -15,6 +14,8 @@ type Query {
   leaderBoardEntriesTop: [LeaderBoardEntry!]!
   microgameStatsByGameId(gameId: String!): MicrogameStats!
   microgameStats: MicrogameStats!
+  clientVersion: String!
+  news: [NewsEntry!]!
 }
 
 interface Node {
@@ -89,6 +90,8 @@ type MicrogameStats implements Node {
 type DifficultySlice {
   difficulty: Float!
   totalPlays: Float!
+  wins: Float!
+  losses: Float!
   winRatio: Float!
   lossRatio: Float!
   winLossRatio: Float!
@@ -114,11 +117,21 @@ type LeaderBoardEntry implements Node {
   score: Float!
   sprite: String!
   frame: Float!
+  last_microgame_key: String!
+  last_microgame_name: String!
   timestamp: Float!
+}
+
+type NewsEntry {
+  id: String!
+  title: String!
+  content: String!
+  type: String!
 }
 
 type Mutation {
   guestbookCreate(input: GuestbookCreateInput!): Guestbook!
+  visitPage(route: String!): PageVisit!
   addMicrogameRating(input: AddMicrogameRatingInput!): MicrogameRating!
 }
 

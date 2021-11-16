@@ -131,11 +131,11 @@ function shuffle(array: any[]) {
         }
       `,
       skip() {
-        return !this.$route?.name;
+        return !this.$route?.fullPath;
       },
       variables() {
         return {
-          route: this.$route.name,
+          route: this.$route.fullPath,
         };
       },
     },
