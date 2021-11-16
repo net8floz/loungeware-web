@@ -42,7 +42,7 @@ function loadYy(filePath) {
  */
 function extractMetadataScripts(yypData) {
   // Find scripts that end in _metadata
-  console.log('Finding metadata scripts');
+  console.info('Finding metadata scripts');
   const resources = yypData.resources
     .filter((item) => {
       if (item.id.name.startsWith('___')) return false;
@@ -51,13 +51,13 @@ function extractMetadataScripts(yypData) {
         item.id.path.startsWith('scripts/') &&
         item.id.name.endsWith('_metadata')
       ) {
-        console.log(`...Found ${item.id.name}`);
+        console.info(`...Found ${item.id.name}`);
         return true;
       }
       return false;
     })
     .map((item) => item.id.path.replace('.yy', '.gml'));
-  console.log(`Found ${resources.length} metadata scripts\n`);
+  console.info(`Found ${resources.length} metadata scripts\n`);
   return resources;
 }
 
@@ -92,7 +92,7 @@ function removeComments(gml) {
  * @returns {object[]} List of microgame config objects
  */
 function extractConfigJsonFromGml(scriptPaths) {
-  console.log('Parsing config from GML');
+  console.info('Parsing config from GML');
   const games = scriptPaths
     .map((scriptPath) => {
       const gml = removeComments(
@@ -101,10 +101,10 @@ function extractConfigJsonFromGml(scriptPaths) {
       let config;
       try {
         config = extractConfigParser.parse(gml);
-        console.log(`...Parsed ${config.length} configs from ${scriptPath}`);
+        console.info(`...Parsed ${config.length} configs from ${scriptPath}`);
       } catch (err) {
         console.error(`...Parse error in ${scriptPath}`);
-        console.log(gml);
+        console.info(gml);
         return [];
       }
       return config;
@@ -117,7 +117,7 @@ function extractConfigJsonFromGml(scriptPaths) {
       game.config.show_on_website
   );
 
-  console.log(
+  console.info(
     `Parsed ${games.length} config from GML, ${enabled.length} were enabled\n`
   );
   return enabled;
@@ -129,7 +129,7 @@ function extractConfigJsonFromGml(scriptPaths) {
  * @param {object} yypData YYP data object
  */
 function copyLabelImages(games, yypData) {
-  console.log('Copying label images');
+  console.info('Copying label images');
   games.map((game) => {
     const resourcePath = findAssetYy(game.config.cartridge_label, yypData);
     if (resourcePath) {
@@ -142,12 +142,12 @@ function copyLabelImages(games, yypData) {
       );
       const targetPath = path.join(TARGET_LABELS_DIR, `${game.name}.png`);
       fs.copyFileSync(imagePath, targetPath);
-      console.log(`...Copied label image for ${game.name}`);
+      console.info(`...Copied label image for ${game.name}`);
     } else {
       console.error(`...Could not get label image for ${game.name}`);
     }
   });
-  console.log('Copied label images\n');
+  console.info('Copied label images\n');
 }
 
 /**
@@ -172,7 +172,7 @@ export const numGames = ${numGames};
 export const numContributors = ${numContributors};
 `;
   fs.writeFileSync(TARGET_GAMES_LIST_FILE, code);
-  console.log(
+  console.info(
     `Generated gamesList.ts file, with ${numGames} games and ${numContributors} contributors\n`
   );
 }
@@ -183,7 +183,7 @@ export const numContributors = ${numContributors};
  * @returns {string[]} List of larold names
  */
 function copyLaroldImages(yypData) {
-  console.log('Copying Larold images');
+  console.info('Copying Larold images');
   const resourcePath = findAssetYy(LAROLD_SPRITE_NAME, yypData);
   const yy = loadYy(resourcePath);
 
@@ -200,7 +200,7 @@ function copyLaroldImages(yypData) {
     return imageName;
   });
 
-  console.log(`Copied ${laroldNames.length} Larold images\n`);
+  console.info(`Copied ${laroldNames.length} Larold images\n`);
   return laroldNames;
 }
 
@@ -212,7 +212,7 @@ function outputLaroldList(laroldNames) {
   const code = `export const larolds = ${JSON.stringify(laroldNames, null, 2)};
 `;
   fs.writeFileSync(TARGET_LAROLDS_LIST_FILE, code);
-  console.log(
+  console.info(
     `Generated laroldsList.ts file, with ${laroldNames.length} Larolds\n`
   );
 }

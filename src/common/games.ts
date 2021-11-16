@@ -80,7 +80,6 @@ const makeAuthorNames = function (
   return Object.values(authors);
 };
 
-console.log('Exported games');
 export const games: MicrogameMetadata[] = gamesList.games.map((data) => {
   return {
     id: data.name,

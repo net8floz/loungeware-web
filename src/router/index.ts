@@ -122,20 +122,22 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  apollo.defaultClient.mutate({
-    mutation: gql`
-      mutation router_visitPage($route: String!) {
-        visitPage(route: $route) {
-          id
-          visits
+  if (window.location.host === 'loungeware.games') {
+    apollo.defaultClient.mutate({
+      mutation: gql`
+        mutation router_visitPage($route: String!) {
+          visitPage(route: $route) {
+            id
+            visits
+          }
         }
-      }
-    `,
-    variables: {
-      route: to.fullPath,
-    },
-  });
-  next();
+      `,
+      variables: {
+        route: to.fullPath,
+      },
+    });
+    next();
+  }
 });
 
 export default router;
