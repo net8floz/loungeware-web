@@ -1,7 +1,11 @@
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -126,16 +130,13 @@ export type Mutation = {
   addMicrogameRating: MicrogameRating;
 };
 
-
 export type MutationGuestbookCreateArgs = {
   input: GuestbookCreateInput;
 };
 
-
 export type MutationVisitPageArgs = {
   route: Scalars['String'];
 };
-
 
 export type MutationAddMicrogameRatingArgs = {
   input: AddMicrogameRatingInput;
@@ -181,51 +182,41 @@ export type Query = {
   news: Array<NewsEntry>;
 };
 
-
 export type QueryNodeArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryUserArgs = {
   id: Scalars['String'];
 };
 
-
 export type QueryGuestbookArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryPageVisitsArgs = {
   route: Scalars['String'];
 };
 
-
 export type QueryMicrogameByGameIdArgs = {
   gameId: Scalars['String'];
 };
-
 
 export type QueryMicrogamesByContributorArgs = {
   authorPrefix: Scalars['String'];
 };
 
-
 export type QueryContributorByAuthorPrefixArgs = {
   prefix: Scalars['String'];
 };
-
 
 export type QueryLaroldsByAuthorArgs = {
   prefix: Scalars['String'];
 };
 
-
 export type QueryLeaderBoardEntryArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryMicrogameStatsByGameIdArgs = {
   gameId: Scalars['String'];

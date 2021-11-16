@@ -136,7 +136,13 @@ router.beforeEach((to, from, next) => {
         route: to.fullPath,
       },
     });
-    next();
+  }
+  next();
+
+  const app = document.getElementsByClassName('scrollview');
+  if (app) {
+    app.item(0)?.scrollTo(0, 0);
+    console.log('Do scroll');
   }
 });
 
