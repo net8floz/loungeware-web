@@ -12,7 +12,10 @@
           <div v-for="(entry, i) in guestbooks" :key="i">
             <div class="gb-entry media-border" v-if="entry.author">
               <div class="guestbook-entry-wrap">
-                <img class="discord-pfp" src="/static/images/test-pfp.png" />
+                <img
+                  class="discord-pfp"
+                  :src="entry.author.profilePictureUrl"
+                />
                 <span class="title">{{ entry.author.displayName }}</span>
                 <strong class="date-display">{{
                   entry.createdAt | moment('MMM Do YY')
@@ -64,7 +67,7 @@ import * as schema from '@/gql/schema';
     LaroldImg,
   },
   metaInfo: {
-    title: 'Sign Our Guestbook',
+    title: 'Guestbook',
   },
   apollo: {
     guestbooks: {
@@ -77,6 +80,7 @@ import * as schema from '@/gql/schema';
             author {
               id
               displayName
+              profilePictureUrl
             }
           }
         }
@@ -168,7 +172,7 @@ textarea {
     width: 100%;
     padding: 10px;
     background: none;
-    border-radius:3px;
+    border-radius: 3px;
     // margin-right: 100px;
     // border: solid thin #ddd;
 
@@ -187,7 +191,7 @@ textarea {
     padding-bottom: 12px;
   }
 
-  .discord-pfp{
+  .discord-pfp {
     width: 28px;
     border-radius: 100px;
     margin-right: 10px;

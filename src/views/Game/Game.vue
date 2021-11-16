@@ -1,7 +1,7 @@
 <template>
   <div class="container full-width">
     <!-- Breadcrumbs -->
-    <div class="row center-xs full-width">
+    <div class="row center-xs full-width addressbar">
       <div class="col-xs-12">
         <h2>
           <larold-img name="ghost larold" class="mr-1" />
@@ -13,39 +13,72 @@
     </div>
 
     <!-- BANNER -->
-    <div class="row center-xs full-width">
-      <div class="col">
+    <div class="row center-xs full-width cover">
+      <div class="col col-6">
         <!-- CART -->
         <Cart :size="2" :game-id="game.id" />
-
-        <!-- <img class="cart img-pixel media-border" :src="cartLabelSrc" /> -->
-
-        <!-- ACTIONS -->
-        <div class="text-center mt-1">
-          <!-- <a class="btn solid red mr-2">Play in gallery</a> -->
+      </div>
+      <div class="col col-6 title-panel">
+        <!-- INFO -->
+        <div class="panel">
+          <div class="title mt-1">{{ displayName }}</div>
           <router-link
             v-for="(author, i) in authors"
             :key="`${i}-author`"
             :to="{ name: 'browse-by-author', params: { author: author.id } }"
             class="btn"
           >
-            More from {{ author.displayName }}
+            {{ author.displayName }}
           </router-link>
-          <a :href="galleryRelativeLink" class="btn"> Play In Gallery </a>
+          <!-- <div class="">Added On {{ dateAdded }}</div> -->
+          <!-- <div class="">Duration {{ microgame.stats }} seconds</div> -->
+        </div>
+
+        <!-- <img class="cart img-pixel media-border" :src="cartLabelSrc" /> -->
+      </div>
+    </div>
+
+    <div class="row center-xs full-width panel links">
+      <a :href="galleryRelativeLink" class="btn"> Play In Gallery </a>
+    </div>
+
+    <!-- DESC PANEL -->
+    <div class="panel mt-2">
+      <!-- DESCRIPTION -->
+      <div v-if="description" class="row center-xs full-width desc-wrap">
+        <div class="inner col-xs-12">
+          <div class="title">Description</div>
+          <p v-for="(paragraph, i) in description" :key="`${i}-description`">
+            {{ paragraph }}
+          </p>
         </div>
       </div>
-      <div class="col">
-        <!-- INFO -->
-        <div>
-          <div class="title mt-1">INFO</div>
-          <div class="">Added On {{ dateAdded }}</div>
-          <div class="">Duration {{ microgame.stats }} seconds</div>
+
+      <!-- HOW TO PLAY -->
+      <div v-if="howToPlay" class="row center-xs full-width desc-wrap">
+        <div class="col-xs-12 inner">
+          <div class="title">How To Play</div>
+          <p v-for="(paragraph, i) in howToPlay" :key="`${i}-how-to-play`">
+            {{ paragraph }}
+          </p>
         </div>
-        <!-- CREDITS -->
-        <div>
+      </div>
+    </div>
+
+    <div class="panel row center-xs full-width">
+      <div class="basic-info col col-6">
+        <div class="pad-10">
+          <div class="credits-title title">INFO</div>
+          <div class="info-node">Added On {{ dateAdded }}</div>
+          <div class="info-node">Duration {{ gameDuration }} seconds</div>
+        </div>
+      </div>
+
+      <div class="col col-6">
+        <div class="pad-10">
           <div v-if="credits.length > 0">
-            <div class="title mt-2">CREDITS</div>
-            <ul>
+            <div class="credits-title title">ADDITIONAL CREDITS</div>
+            <ul class="credits">
               <li v-for="(item, i) in credits" :key="i">
                 {{ item }}
               </li>
@@ -61,145 +94,113 @@
     </div>
 
     <!-- LOADING -->
-    <!-- <div v-else-if="$apollo.queries.microgame.loading">
+    <div v-else-if="$apollo.queries.microgameByGameId.loading">
       <p>Loading</p>
-    </div> -->
-
-    <div class="text-center">
-      <h2 class="title">"{{ prompt }}"</h2>
     </div>
 
-    <!-- IMAGES -->
-    <!-- <div v-if="imageCount > 0" class="row center-xs full-width">
-      <div class="col-xs-3" v-for="i in imageCount" :key="`${i}-image`">
-        <img class="preview-img" :src="getImagePath(i)" />
+    <div v-else-if="!!microgameByGameId">
+      <!-- STATS PANEL -->
+      <div class="panel tab-box">
+        <div class="tab-buttons">
+          <div
+            @click="activeTabIndex = 0"
+            :class="`btn ${activeTabIndex == 0 ? 'active' : ''}`"
+          >
+            All Stats
+          </div>
+          <div
+            v-for="i in (1, 5)"
+            :key="`tab-btn-${i}`"
+            :class="`btn ${activeTabIndex == i ? 'active' : ''}`"
+            @click="activeTabIndex = i"
+          >
+            Diff {{ i }}
+          </div>
+        </div>
+        <div class="tabs">
+          <div class="tab" v-show="activeTabIndex == 0">
+            <div>
+              Total Plays: <b>{{ microgame.stats.totalPlays }}</b>
+            </div>
+            <div>
+              Win Percent:
+              <b>{{ Math.round(microgame.stats.winRatio * 100) }}%</b>
+            </div>
+            <div>
+              Wins: <b>{{ microgame.stats.wins }}</b>
+            </div>
+            <div>
+              Losses: <b>{{ microgame.stats.losses }}</b>
+            </div>
+          </div>
+          <div
+            v-for="i in (1, 5)"
+            :key="`tab-${i}`"
+            class="tab"
+            v-show="activeTabIndex == i"
+          >
+            <div>
+              Total Plays:
+              <b>{{ microgame.stats.difficultySlices[i - 1].totalPlays }}</b>
+            </div>
+            <div>
+              Win Percent:
+              <b
+                >{{
+                  Math.round(
+                    microgame.stats.difficultySlices[i - 1].winRatio * 100
+                  )
+                }}%</b
+              >
+            </div>
+            <div>
+              Wins: <b>{{ microgame.stats.difficultySlices[i - 1].wins }}</b>
+            </div>
+            <div>
+              Losses:
+              <b>{{ microgame.stats.difficultySlices[i - 1].losses }}</b>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- <div class="text-center">
+      <h2 class="title">"{{ prompt }}"</h2>
     </div> -->
 
     <!-- DESCRIPTION -->
-    <div v-if="description" class="row center-xs full-width">
+    <!-- <div v-if="description" class="row center-xs full-width">
       <div class="col-xs-12">
         <div class="title">Description</div>
         <p v-for="(paragraph, i) in description" :key="`${i}-description`">
           {{ paragraph }}
         </p>
       </div>
-    </div>
+    </div> -->
 
     <!-- HOW TO PLAY -->
-    <div v-if="howToPlay" class="row center-xs full-width">
+    <!-- <div v-if="howToPlay" class="row center-xs full-width">
       <div class="col-xs-12">
         <div class="title">How To Play</div>
         <p v-for="(paragraph, i) in howToPlay" :key="`${i}-how-to-play`">
           {{ paragraph }}
         </p>
       </div>
-    </div>
+    </div> -->
 
-    <div class="border mt-2 mb-2" />
+    <!-- <div class="border mt-2 mb-2" /> -->
 
-    <!-- Community -->
-    <div class="row center-xs full-width">
+    <!-- <div class="row center-xs full-width">
       <div class="col-xs-12">
         <h2>
           <larold-img name="bunny larold" class="mr-1" />
           Community
         </h2>
       </div>
-    </div>
+    </div> -->
 
     <!-- No Community -->
-    <div class="text-center" v-if="!microgame">
-      <p class="title">Loading Community...</p>
-    </div>
-
-    <div v-else class="row center-xs full-width">
-      <!-- RATING -->
-      <div class="col">
-        <div class="title">
-          Rating
-          <small> ( {{ ratingsCount }} )</small>
-        </div>
-        <div v-if="!!microgame">
-          <div class="mb-1 mt-1">
-            <strong
-              >Difficulty:
-              <span class="ml-1">{{ difficultyRating }}/5</span></strong
-            >
-          </div>
-          <div>
-            <strong>
-              Favorited:
-              <span class="ml-1">{{ timesFavorited }}</span>
-            </strong>
-          </div>
-        </div>
-      </div>
-
-      <!-- Comments -->
-      <div class="col">
-        <div class="title">Comments</div>
-        <div class="comment-box-container">
-          <div v-if="microgame.ratings.length == 0">
-            <p>No one has rated this game yet</p>
-          </div>
-          <div
-            class="comment-box mt-1"
-            v-for="(rating, i) in microgame.ratings"
-            :key="`${i}-rating`"
-            v-show="!!rating.comment"
-          >
-            <span class="title">
-              {{ rating.author.displayName }}
-            </span>
-            <span v-if="rating.createdAt != rating.editedAt">
-              edited on
-              <strong>
-                {{ rating.editedAt | moment('dddd, MMMM Do YYYY') }}
-              </strong>
-            </span>
-            <span v-else>
-              on
-              <strong>
-                {{ rating.createdAt | moment('dddd, MMMM Do YYYY') }}
-              </strong>
-            </span>
-
-            <p>
-              {{ rating.comment }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div v-if="!!microgame" class="border mt-2 mb-2" />
-    <div v-if="!!microgame" class="row center-xs full-width">
-      <div class="col-xs-12">
-        <h2>
-          <larold-img name="frog larold" class="mr-1" />
-          <span v-if="hasMyRating"> Update your rating! </span>
-          <span v-else> Rate This Game! </span>
-        </h2>
-
-        <p v-if="!hasRatings">
-          This game has no ratings, help it out by being the first!
-        </p>
-
-        <div v-if="!$auth.isInitialized">Loading</div>
-        <div v-else-if="!$auth.isLoggedIn">
-          <p>You must be logged in to rate games</p>
-        </div>
-        <div v-else-if="!microgame">
-          <p>What happened to the microgame?</p>
-        </div>
-        <GameRatingForm
-          @success="onRatingSubmitSuccess"
-          v-else
-          :microgameId="microgame.id"
-        />
-      </div>
-    </div>
   </div>
 </template>
 
@@ -267,6 +268,7 @@ import Cart from '@/components/Cart.vue';
                 difficulty
                 totalPlays
                 wins
+                losses
                 winRatio
               }
             }
@@ -278,9 +280,12 @@ import Cart from '@/components/Cart.vue';
 })
 export default class Game extends Vue {
   private microgameByGameId!: schema.Microgame;
+
   private get microgame() {
     return this.microgameByGameId;
   }
+
+  private activeTabIndex = 0;
 
   private get game() {
     return this.$lwMeta.findGame(this.gameSlug as string);
@@ -400,5 +405,159 @@ export default class Game extends Vue {
 .preview-img {
   width: 100%;
   height: auto;
+}
+
+.panel {
+  border-bottom: 4px dotted #2b2438;
+  padding: 0px 12px;
+  margin: 0px;
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.title {
+  font-size: 1.2rem;
+}
+
+.title-panel {
+  .panel {
+    text-align: center;
+    .title {
+      font-size: 1.8rem;
+    }
+    border: none;
+  }
+}
+$tab_color: #2b2438;
+.tab-buttons {
+  text-align: center;
+  .btn.active {
+    background-color: #f19a52;
+    color: #1f1b25;
+  }
+}
+
+.tabs {
+  .tab {
+    //padding: 20px;
+    margin: auto;
+    border: 4px solid $tab_color;
+    margin-bottom: 30px;
+    max-width: 466px;
+    div {
+      padding: 5px;
+      padding-left: 8px;
+      border-bottom: 2px dotted $tab_color;
+      &:last-of-type {
+        border-bottom: none;
+      }
+      b {
+        color: #f19a52;
+        float: right;
+      }
+    }
+  }
+}
+.col {
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cover {
+  border: 4px dotted #2b2438;
+  box-sizing: border-box;
+  border-left: none;
+  border-right: none;
+  padding: 20px 0px;
+}
+.addressbar {
+  margin-bottom: 0px;
+  padding: 0px;
+  font-size: 0.7rem;
+
+  div {
+    padding: 0px;
+  }
+}
+.tab-box {
+  margin-top: 25px;
+}
+.credits {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  li {
+    padding-left: 0px;
+  }
+}
+.credits-title {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  padding-left: 0px;
+  padding-right: 3px;
+}
+
+.row {
+  .col {
+    border-left: 4px dotted #2b2438;
+    &:first-of-type {
+      border-left: none;
+    }
+  }
+}
+
+.info-node {
+  display: block;
+  width: 100%;
+}
+
+.tab-buttons .btn {
+  border: 4px solid #2b2438;
+  border-left: none;
+  border-bottom: none;
+  padding: 5px 8px 8px 8px;
+  &:first-of-type {
+    border-left: 4px solid #2b2438;
+  }
+}
+
+.desc-wrap {
+  .inner {
+    padding: 0px;
+    margin-top: 10px;
+    p {
+      padding: 0px;
+      margin: 0px;
+    }
+  }
+
+  &:last-of-type {
+    .inner {
+      margin-bottom: 14px;
+    }
+  }
+}
+
+.pad-10 {
+  padding: 20px;
+  padding-top: 15px;
+  width: 100%;
+}
+
+.basic-info {
+  align-items: flex-start;
+  .pad-10 {
+    padding-left: 0px;
+  }
+}
+
+.links {
+  .btn {
+    font-size: 1rem;
+    flex: 2;
+    padding-left: 0px;
+  }
 }
 </style>

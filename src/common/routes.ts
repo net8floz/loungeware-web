@@ -187,7 +187,7 @@ export const routeMetadatas: { [route: string]: RouteMetadataGenerator } = {
   [routePath('guestbook')]: () => {
     return {
       ...getDefaultRouteMetadata(),
-      ...makeTitle('Sign Our Guestbook'),
+      ...makeTitle('Guestbook'),
     };
   },
   [routePath('logout')]: () => {
@@ -229,7 +229,7 @@ export const routeMetadatas: { [route: string]: RouteMetadataGenerator } = {
   [routePath('about')]: () => {
     return {
       ...getDefaultRouteMetadata(),
-      ...makeTitle('Welcome To Loungeware'),
+      ...makeTitle('Loungeware'),
     };
   },
 };
