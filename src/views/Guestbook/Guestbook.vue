@@ -67,7 +67,7 @@ import * as schema from '@/gql/schema';
     LaroldImg,
   },
   metaInfo: {
-    title: 'Sign Our Guestbook',
+    title: 'Guestbook',
   },
   apollo: {
     guestbooks: {

@@ -282,11 +282,11 @@ footer {
     position: relative;
     width: 100%;
     &:first-of-type {
-      border-top: 4px dotted #2b2438;
+      border-top: 4px dotted #382e4a;
       padding-top: 30px;
     }
     &:last-of-type {
-      border-top: 4px dotted #2b2438;
+      border-top: 4px dotted #382e4a;
     }
 
     $humble-brag-size: 140px;

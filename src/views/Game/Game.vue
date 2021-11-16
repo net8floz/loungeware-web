@@ -1,7 +1,7 @@
 <template>
   <div class="container full-width">
     <!-- Breadcrumbs -->
-    <div class="row center-xs full-width">
+    <div class="row center-xs full-width addressbar">
       <div class="col-xs-12">
         <h2>
           <larold-img name="ghost larold" class="mr-1" />
@@ -13,13 +13,13 @@
     </div>
 
     <!-- BANNER -->
-    <div class="row center-xs full-width">
+    <div class="row center-xs full-width cover">
       <div class="col col-6">
         <!-- CART -->
         <Cart :size="2" :game-id="game.id" />
       </div>
-      <div class="col col-6">
-        <!-- INFO -->
+      <div class="col col-6 title-panel">
+        <!-- INFO --> 
         <div class="panel">
           <div class="title mt-1">{{ displayName }}</div>
           <router-link
@@ -34,26 +34,60 @@
           <!-- <div class="">Duration {{ microgame.stats }} seconds</div> -->
         </div>
 
-        <div class="panel mt-1">
-          <div class="">Added On {{ dateAdded }}</div>
-          <div class="">Duration {{ gameDuration }} seconds</div>
-          <div class="col">
-            <div>
-              <div v-if="credits.length > 0">
-                <div class="mt-2">CREDITS</div>
-                <ul>
-                  <li v-for="(item, i) in credits" :key="i">
-                    {{ item }}
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <a :href="galleryRelativeLink" class="btn"> Play In Gallery </a>
-        </div>
         <!-- <img class="cart img-pixel media-border" :src="cartLabelSrc" /> -->
       </div>
     </div>
+
+    <div class="row center-xs full-width panel links">
+      <a :href="galleryRelativeLink" class="btn"> Play In Gallery </a>
+    </div>
+
+    <!-- DESC PANEL -->
+    <div class="panel mt-2">
+      <!-- DESCRIPTION -->
+      <div v-if="description" class="row center-xs full-width desc-wrap">
+        <div class="inner col-xs-12">
+          <div class="title">Description</div>
+          <p v-for="(paragraph, i) in description" :key="`${i}-description`">
+            {{ paragraph }}
+          </p>
+        </div>
+      </div>
+
+      <!-- HOW TO PLAY -->
+      <div v-if="howToPlay" class="row center-xs full-width desc-wrap">
+        <div class="col-xs-12 inner">
+          <div class="title">How To Play</div>
+          <p v-for="(paragraph, i) in howToPlay" :key="`${i}-how-to-play`">
+            {{ paragraph }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel row center-xs full-width">
+      <div class="basic-info col col-6">
+        <div class="pad-10">
+          <div class="credits-title title">INFO</div>
+          <div class="info-node">Added On {{ dateAdded }}</div>
+          <div class="info-node">Duration {{ gameDuration }} seconds</div>
+        </div>
+      </div>
+
+      <div class="col col-6">
+        <div class="pad-10">
+          <div v-if="credits.length > 0">
+            <div class="credits-title title">ADDITIONAL CREDITS</div>
+            <ul class="credits">
+              <li v-for="(item, i) in credits" :key="i">
+                {{ item }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
 
     <!-- No Game -->
     <div v-if="!game">
@@ -67,7 +101,7 @@
 
     <div v-else-if="!!microgameByGameId">
       <!-- STATS PANEL -->
-      <div class="panel">
+      <div class="panel tab-box">
         <div class="tab-buttons">
           <div
             @click="activeTabIndex = 0"
@@ -86,6 +120,8 @@
         </div>
         <div class="tabs">
           <div class="tab" v-show="activeTabIndex == 0">
+            <div>Total Plays: {{ microgame.stats.totalPlays }}</div>
+            <div>Win Percent: {{ Math.round(microgame.stats.winRatio * 100) }}%</div>
             <div>Wins: {{ microgame.stats.wins }}</div>
             <div>Losses: {{ microgame.stats.losses }}</div>
           </div>
@@ -103,29 +139,9 @@
         </div>
       </div>
     </div>
+   
 
-    <!-- DESC PANEL -->
-    <div class="panel mt-2">
-      <!-- DESCRIPTION -->
-      <div v-if="description" class="row center-xs full-width">
-        <div class="col-xs-12">
-          <div class="title">Description</div>
-          <p v-for="(paragraph, i) in description" :key="`${i}-description`">
-            {{ paragraph }}
-          </p>
-        </div>
-      </div>
 
-      <!-- HOW TO PLAY -->
-      <div v-if="howToPlay" class="row center-xs full-width">
-        <div class="col-xs-12">
-          <div class="title">How To Play</div>
-          <p v-for="(paragraph, i) in howToPlay" :key="`${i}-how-to-play`">
-            {{ paragraph }}
-          </p>
-        </div>
-      </div>
-    </div>
 
     <!-- <div class="text-center">
       <h2 class="title">"{{ prompt }}"</h2>
@@ -270,6 +286,7 @@ export default class Game extends Vue {
     return this?.game?.prompt || '';
   }
 
+
   private get cartLabelSrc() {
     return this.game ? `/games/${this.game.id}.png` : '';
   }
@@ -370,19 +387,141 @@ export default class Game extends Vue {
 }
 
 .panel {
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 12px;
+  border-bottom: 4px dotted #2b2438;
+  padding: 0px 12px;
+  margin:0px;
+  &:last-of-type{
+    border-bottom: none;
+  }
 }
 
-.tab-buttons {
-  .btn.active {
-    background-color: #c8554e;
+.title{
+  font-size: 1.2rem;
+}
+
+.title-panel {
+  .panel {
+    text-align: center;
+    .title {
+      font-size: 1.8rem;
+    }
+    border: none;
   }
+}
+$tab_color: #2b2438;
+.tab-buttons {
+
+  .btn.active {
+    background-color: $tab_color;
+  }
+
 }
 
 .tabs {
   .tab {
-    padding: 20px;
+    //padding: 20px;
+    border: 4px solid $tab_color;
+    margin-bottom: 30px;
+    div{
+      padding:5px;
+      padding-left: 8px;
+      border-bottom: 2px dotted $tab_color;
+      &:last-of-type{
+        border-bottom: none;
+      }
+    }
   }
 }
+.col {
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cover {
+  border: 4px dotted #2b2438;
+  box-sizing: border-box;
+  border-left: none;
+  border-right: none;
+  padding: 20px 0px;
+}
+.addressbar {
+  margin-bottom: 0px;
+  padding: 0px;
+  font-size: 0.7rem;
+
+  div {
+    padding: 0px;
+  }
+}
+.tab-box {
+  margin-top: 25px;
+}
+.credits {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  li{padding-left:0px;}
+}
+.credits-title{
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  padding-left: 0px;
+  padding-right: 3px;
+}
+
+.row{
+  .col{
+    border-left: 4px dotted #2b2438;
+    &:first-of-type{
+      border-left: none;
+    }
+  }
+}
+
+.info-node{
+  display:block;
+  width:100%;
+}
+
+.desc-wrap{
+ .inner{
+   padding: 0px;
+   margin-top: 10px;
+   p{
+     padding:0px;
+     margin:0px;
+   }
+ }
+
+  &:last-of-type{
+    .inner{
+      margin-bottom:14px;
+    }
+  }
+
+}
+
+.pad-10{
+  padding:20px;
+  padding-top: 15px;
+  width:100%;
+}
+
+.basic-info{
+  align-items: flex-start;
+  .pad-10{
+    padding-left:0px;
+  }
+}
+
+.links{
+  
+  .btn{
+    font-size: 1rem;
+    flex:2;
+    padding-left:0px;
+  }
+}
+
 </style>
