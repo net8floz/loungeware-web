@@ -120,10 +120,10 @@
         </div>
         <div class="tabs">
           <div class="tab" v-show="activeTabIndex == 0">
-            <div>Total Plays: {{ microgame.stats.totalPlays }}</div>
-            <div>Win Percent: {{ Math.round(microgame.stats.winRatio * 100) }}%</div>
-            <div>Wins: {{ microgame.stats.wins }}</div>
-            <div>Losses: {{ microgame.stats.losses }}</div>
+            <div>Total Plays: <b>{{ microgame.stats.totalPlays }}</b></div>
+            <div>Win Percent: <b>{{ Math.round(microgame.stats.winRatio * 100) }}%</b></div>
+            <div>Wins: <b>{{ microgame.stats.wins }}</b></div>
+            <div>Losses: <b>{{ microgame.stats.losses }}</b></div>
           </div>
           <div
             v-for="i in (1, 5)"
@@ -131,10 +131,10 @@
             class="tab"
             v-show="activeTabIndex == i"
           >
-            <div>Wins: {{ microgame.stats.difficultySlices[i - 1].wins }}</div>
-            <div>
-              Losses: {{ microgame.stats.difficultySlices[i - 1].losses }}
-            </div>
+            <div>Total Plays: <b>{{ microgame.stats.difficultySlices[i - 1].totalPlays }}</b></div>
+            <div>Win Percent: <b>{{ Math.round(microgame.stats.difficultySlices[i - 1].winRatio * 100) }}%</b></div>
+            <div>Wins: <b>{{ microgame.stats.difficultySlices[i - 1].wins }}</b></div>
+            <div>Losses: <b>{{ microgame.stats.difficultySlices[i - 1].losses }}</b></div>
           </div>
         </div>
       </div>
@@ -410,9 +410,10 @@ export default class Game extends Vue {
 }
 $tab_color: #2b2438;
 .tab-buttons {
-
+  text-align: center;
   .btn.active {
-    background-color: $tab_color;
+    background-color: #f19a52;
+    color: #1f1b25;
   }
 
 }
@@ -420,14 +421,20 @@ $tab_color: #2b2438;
 .tabs {
   .tab {
     //padding: 20px;
+    margin:auto;
     border: 4px solid $tab_color;
     margin-bottom: 30px;
+    max-width:466px;
     div{
       padding:5px;
       padding-left: 8px;
       border-bottom: 2px dotted $tab_color;
       &:last-of-type{
         border-bottom: none;
+      }
+      b{
+        color:#f19a52;
+        float:right;
       }
     }
   }
@@ -482,6 +489,17 @@ $tab_color: #2b2438;
 .info-node{
   display:block;
   width:100%;
+}
+
+.tab-buttons .btn{
+  border: 4px solid #2b2438;
+  border-left: none;
+  border-bottom: none;
+  padding: 5px 8px 8px 8px;
+  &:first-of-type{
+     border-left: 4px solid #2b2438;
+  }
+  
 }
 
 .desc-wrap{
