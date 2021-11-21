@@ -58,7 +58,9 @@ export default class Browse extends Vue {
     (localStorage.getItem('browse.viewType') as ViewType) || 'list';
 
   private get games() {
-    return this.$lwMeta.games;
+    return this.$lwMeta.games.sort((a, b) => {
+      return a.displayName[0] > b.displayName[0] ? 1 : -1;
+    });
   }
 
   private getBtnClass(type: ViewType) {

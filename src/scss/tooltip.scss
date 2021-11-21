@@ -38,7 +38,7 @@
       border-right-color: transparent !important;
       border-bottom-color: transparent !important;
       bottom: -$tooltipTriangleSize;
-      left: calc(50% - $tooltipTriangleSize);
+      left: calc(50% - 12px);
       margin-top: 0;
       margin-bottom: 0;
     }
@@ -54,7 +54,7 @@
       border-right-color: transparent !important;
       border-top-color: transparent !important;
       top: -$tooltipTriangleSize;
-      left: calc(50% - $tooltipTriangleSize);
+      left: calc(50% - 12px);
       margin-top: 0;
       margin-bottom: 0;
     }
