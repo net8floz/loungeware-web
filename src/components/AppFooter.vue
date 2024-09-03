@@ -27,7 +27,7 @@
             <div class="big">
               <img src="/static/footer/gms2logo.png" />
             </div>
-            <div class="small">GMS2</div>
+            <div class="small">GameMaker</div>
           </div>
         </div>
       </div>
@@ -151,11 +151,11 @@ export default class AppFooter extends Vue {
   private pageVisits?: schema.PageVisit;
 
   private items = [
-    ['@net8floz', 'making Admin Sim'],
     ['@katsaii', 'coming up with the name "Loungeware"'],
     ['@zandy', 'making jams'],
     ['@meseta', 'making jams'],
-    ['@nahoo', 'fixing Beenade'],
+    ['@nahoo', 'breaking Beenade'],
+    ['@orphilius', 'fixing Beenade'],
     ['@baku', 'solving the case'],
     ['@baku', 'being a dork'],
     ['@mimpy', 'actually fixing Beenade'],
@@ -164,6 +164,7 @@ export default class AppFooter extends Vue {
     ['@yosi', 'porting Epic Fire Truck'],
     ['@net8floz', 'making the website'],
     ['@masharcade', 'nerfing cookie dunk'],
+    ['@pixelatedpope', 'purging the heretics'],
   ];
 
   private navItems = {

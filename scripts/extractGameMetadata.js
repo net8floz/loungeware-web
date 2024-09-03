@@ -134,7 +134,8 @@ function copyLabelImages(games, yypData) {
     const resourcePath = findAssetYy(game.config.cartridge_label, yypData);
     if (resourcePath) {
       const yy = loadYy(resourcePath);
-      const frameId = yy.frames[0].compositeImage.FrameId.name;
+      console.info("resource path ", resourcePath);
+      const frameId = yy.frames[0].compositeImage ? yy.frames[0].compositeImage.FrameId.name : yy.frames[0].name;
       const imagePath = path.join(
         ROOT_DIR,
         path.dirname(resourcePath),
@@ -188,7 +189,7 @@ function copyLaroldImages(yypData) {
   const yy = loadYy(resourcePath);
 
   const imagePaths = yy.frames.map((frame) => {
-    const frameId = frame.compositeImage.FrameId.name;
+    const frameId = frame.compositeImage ? frame.compositeImage.FrameId.name : frame.name;
     return path.join(ROOT_DIR, path.dirname(resourcePath), `${frameId}.png`);
   });
 

@@ -88,9 +88,9 @@ const routes: Array<RouteConfig> = [
     beforeEnter: async (to, from, next) => {
       try {
         await auth.logout();
-        window.location.reload();
+        //window.location.reload();
       } catch (err) {
-        window.location.reload();
+        //window.location.reload();
       }
     },
   },
@@ -101,10 +101,10 @@ const routes: Array<RouteConfig> = [
       try {
         await auth.handleCallback(to.query.state as string);
         next({ name: 'about' as RouteName });
-        window.location.reload();
+        //window.location.reload();
       } catch (err) {
         next({ name: 'about' as RouteName });
-        window.location.reload();
+        //window.location.reload();
       }
     },
   },

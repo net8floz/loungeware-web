@@ -6,8 +6,8 @@
         <p class="first-para">
           Loungeware is a collection of microgames in the style of Warioware
           that is made by volunteers all over the world in
-          <strong>GameMaker Studio 2</strong>. Anyone can play for free or
-          submit their own game. Checkout the video below or
+          <strong>GameMaker</strong>. Anyone can play for free or submit their
+          own game. Checkout the video below or
           <router-link :to="navItems.play.to">
             play it now in your browser!
           </router-link>
@@ -24,10 +24,7 @@
           width="100%"
           poster="/static/images/video-preview-alt.png"
         >
-          <source
-            src="https://cdn.discordapp.com/attachments/862889240249892875/878669776107487293/lw-3nd-pass.mp4"
-            type="video/mp4"
-          />
+          <source src="/static/video/lw-3nd-pass.mp4" type="video/mp4" />
 
           Sorry, your browser doesn't support embedded videos.
         </video>
@@ -96,11 +93,10 @@
           How To Contribute
         </h2>
         <p>
-          Loungeware requires a license or active subscription to GameMaker
-          Studio 2. If you fit this description, you can contribute to the
-          project by forking the project on GitHub. Make sure to read the
+          Download <a href="https://gamemaker.io">GameMaker for free</a> and
+          fork the project on Github. Read the
           <a href="https://github.com/spacebake/Loungeware/wiki">wiki page</a>
-          for help and guidelines on how to contribute.
+          for more information.
         </p>
 
         <div class="text-center">

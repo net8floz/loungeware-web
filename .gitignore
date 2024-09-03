@@ -116,7 +116,7 @@ dist
 .pnp.*
 .firebase
 
-public/static/game
+public/static/game-*
 public/static/games
 public/static/larolds
 src/common/gamesList.ts

@@ -64,7 +64,7 @@ function makeDescription(
 
 function getDefaultRouteMetadata(): RouteMetadata {
   const description =
-    'Loungeware is a collection of microgames in the style of Warioware that is made by volunteers all over the world in GameMaker Studio 2. Anyone can play for free or submit their own game.';
+    'Loungeware is a collection of microgames in the style of Warioware that is made by volunteers all over the world in GameMaker. Anyone can play for free or submit their own game.';
   const title = 'Loungeware';
   const image = '/static/images/meta.png';
   const url = 'https://loungeware.games';
@@ -73,8 +73,7 @@ function getDefaultRouteMetadata(): RouteMetadata {
     title: title,
     'meta.copyright': 'Copyright 2021, Loungeware',
     'meta.description': description,
-    'meta.keywords':
-      'game,gamemaker,gamedev,indiedev,indiegame,loungeware,gms2',
+    'meta.keywords': 'game,gamemaker,gamedev,indiedev,indiegame,loungeware,gm',
     'meta.og:image': image,
     'meta.og:url': url,
     'meta.og:description': description,

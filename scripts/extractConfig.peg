@@ -23,7 +23,10 @@ Array
     }
 
 Number
-  = Float / Integer
+  = Float / Integer / CSSColour
+
+CSSColour
+  = "#" [0-9A-Fa-f]* { return text(); }
 
 Float
   = "-"? [0-9]* "." [0-9]* _ { return parseFloat(text()); }

@@ -3,7 +3,7 @@
     <div :class="`player text-center ${isFocused ? 'focused' : 'not-focused'}`">
       <iframe
         class="media-border game-canvas"
-        :src="`/static/game/index.html?gallery_id=${$route.query.gallery_id}`"
+        :src="`/static/game-3-0/index.html?gallery_id=${$route.query.gallery_id}`"
         style="margin-top: 80px"
       />
       <div class="container content-container">
